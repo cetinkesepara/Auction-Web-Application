@@ -68,6 +68,7 @@ namespace proje.Areas.admin.Controllers
                         string path = System.IO.Path.Combine(Server.MapPath("~/Assets/uploads/products_img"), imageName + ".jpg");
                         imageFile.SaveAs(path);
 
+
                         var urunModel = new urunler();
                         urunModel.resim = imageName + ".jpg";
                         urunModel.adi = collection["adi"];
