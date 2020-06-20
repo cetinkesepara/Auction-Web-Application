@@ -1,0 +1,73 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.kargolar>
+
+@{
+    ViewBag.Title = "SatUyeKargolari";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Satıcı-Üye Kargoları</span>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Satıcı-Üye Kargoları</h3></div>
+
+            <div class="tableback">
+                <table class="data_table_pagination table table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Satıcı</th>
+                            <th>Alıcı</th>
+                            <th>Durum</th>
+                            <th>Tarih</th>
+                            <th>Detay/İşlem</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Satıcı</th>
+                            <th>Alıcı</th>
+                            <th>Durum</th>
+                            <th>Tarih</th>
+                            <th>Detay/İşlem</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                            <tr>
+                                <td><a href="@Url.Action("SaticiUrunlerDetay","Urunler",new { id = item.urunler.id } )">@item.urunler.adi</a></td>
+                                <td><a href="@Url.Action("Details","Uyeler",new { id = item.urunler.uye_id } )">@item.urunler.uyeler.adsoy</a></td>
+                                <td><a href="@Url.Action("Details","Uyeler",new { id = item.uye_id } )">@item.uyeler.adsoy</a></td>
+                                <td>
+
+                                    @if (item.durum == "Kargolama İşlemi Bekleniyor")
+                                    {
+                                        <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Satıcının kargoyu teslim etmesi bekleniyor.">@item.durum</div>
+                                    }
+                                    @if (item.durum == "Kargo Yola Çıktı")
+                                    {
+                                        <div style="background-color:#0275D8;color:#fff;padding:5px" title="Kargonun yola çıktığı onaylandı.">@item.durum</div>
+                                    }
+                                    @if (item.durum == "Kargo Teslim Edildi")
+                                    {
+                                        <div style="background-color:#009688;color:#fff;padding:5px" title="Kargo teslim edildi.">@item.durum</div>
+                                    }
+                                </td>
+                                <td>@item.tarih</td>
+                                <td><a href="@Url.Action("SatUye_kargo_islem","Kargolar", new { kargo_id = item.id })" style="width:80%" class="btn btn-success btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i> Detay/İşlem </a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

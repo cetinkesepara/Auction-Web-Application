@@ -1,0 +1,172 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.urunler>
+
+@{
+    ViewBag.Title = "Onay_bekleyenler";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <a href="@Url.Action("Onay_bekleyenler","Hesabim")">Onay Bekleyenler</a>
+</div>
+
+<div class="table-list">
+    <table class="data_table_pagination table table-striped" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Resim</th>
+                <th>Ürün Adı</th>
+                <th>Durum</th>
+                <th>Tarih</th>
+                <th>Detay</th>
+                <th>İptal</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Resim</th>
+                <th>Ürün Adı</th>
+                <th>Durum</th>
+                <th>Tarih</th>
+                <th>Detay</th>
+                <th>İptal</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><div class="urun_profile_img"><img src="~/Assets/uploads/products_img/@item.resim" alt="urun_profil_resmi" width="35" height="35" /></div></td>
+                    <td>@item.adi</td>
+                    <td>
+                        @if (item.onay_durumu == "Hayır")
+                        {
+                            <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Ürün bilgisi kontrol ediliyor.">Onay Bekleniyor</div>
+                        }
+                    </td>
+                    <td>@item.tarih</td>
+                    <td><a href="@Url.Action("Urun_detay","Hesabim",new { urun_id = item.id } )" class="detail"><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+                    <td>
+                        <a href="@Url.Action("Onay_bekleyen_sil","Hesabim", new { urun_id = item.id } )" onclick="return confirm('İptal edilsin mi?')" style="width:80%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> İptal</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="mobile-list">
+    @{ int i = 0, s_list = 1;}
+
+    <div class="pag text-center">
+        <ul>
+            <li><button onclick="sol_btn()" class="sol_btn"><<</button></li>
+            <li><button onclick="sag_btn()" class="sag_btn">>></button></li>
+            <li class="s_konum">1</li>
+            <li>/</li>
+            <li class="ss_text"></li>
+        </ul>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        i++;
+
+        <div class="item s@(s_list)_list">
+
+            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#deneme@(i)" aria-expanded="false" aria-controls="deneme@(i)">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="urun_profile_img"><img src="~/Assets/uploads/products_img/@item.resim" alt="urun_profil_resmi" width="35" height="35" /> @item.adi</div>
+                    </div>
+                    <div class="col-12">
+                        <b>DURUM:</b>
+                        @if (item.onay_durumu == "Hayır")
+                        {
+                            <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Ürün bilgisi kontrol ediliyor.">Onay Bekleniyor</div>
+                        }
+                    </div>
+                </div>
+            </a>
+            <div class="collapse" id="deneme@(i)">
+                <div class="row">
+                    <div class="col-12" style="width:100%;padding-left:15px;padding-right:15px">
+                        <div style="background-color:#FDFDFD;border:1px solid #DFDFDF;padding:5px">
+                            <b>Tarih:</b> @item.tarih <br />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <a href="@Url.Action("Urun_detay","Hesabim",new { urun_id = item.id } )" style="width:100%" class="detail btn btn-info btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-12">
+                        <a href="@Url.Action("Onay_bekleyen_sil","Hesabim", new { urun_id = item.id } )" onclick="return confirm('İptal edilsin mi?')" style="width:100%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> İptal</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        if (i == 10 * s_list)
+        {
+            s_list += 1;
+        }
+    }
+
+    <div class="pag text-center">
+        <ul>
+            <li><button onclick="sol_btn()" class="sol_btn"><<</button></li>
+            <li><button onclick="sag_btn()" class="sag_btn">>></button></li>
+            <li class="s_konum">1</li>
+            <li>/</li>
+            <li class="ss_text"></li>
+        </ul>
+    </div>
+    <input type="hidden" value="1" id="sayfa_konum" />
+    <input type="hidden" value="@s_list" id="sayfa_sayisi" />
+</div>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        $(".ss_text").html(sayfa_sayisi);
+
+        if (sayfa_sayisi > 1) {
+            for (i = 2; i <= sayfa_sayisi; i++) {
+                $(".s"+ i +"_list").hide();
+            }
+        }
+    });
+
+    function sag_btn() {
+        var sayfa_konum = $("#sayfa_konum").val();
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        if (sayfa_konum < sayfa_sayisi) {
+            $(".s" + sayfa_konum + "_list").hide();
+            $("#sayfa_konum").val(parseInt(sayfa_konum) + 1);
+            $(".s" + $("#sayfa_konum").val() + "_list").show();
+            $(".s_konum").html($("#sayfa_konum").val());
+        }
+    }
+
+    function sol_btn() {
+        var sayfa_konum = $("#sayfa_konum").val();
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        if (sayfa_konum > 1) {
+            $(".s" + sayfa_konum + "_list").hide();
+            $("#sayfa_konum").val(parseInt(sayfa_konum) - 1);
+            $(".s" + $("#sayfa_konum").val() + "_list").show();
+            $(".s_konum").html($("#sayfa_konum").val());
+        }
+
+    }
+
+</script>
+
+

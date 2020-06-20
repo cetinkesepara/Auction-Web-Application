@@ -1,0 +1,62 @@
+﻿
+
+@{
+    ViewBag.Title = "TeklifZamaniEkle";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><a href="@Url.Action("TeklifZamanlari","Teklifler")">Teklif Zamanları</a>
+    <span class="con_point">> </span><span>Teklif Zamanı Ekle</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Teklif Zamanı Ekleme Formu</h3></div>
+
+            @if (ViewBag.ZamanEkleSonuc != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ZamanEkleSonuc
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="uye_ekleme_formu">
+                <form action="@Url.Action("TeklifZamaniEkle","Teklifler")" method="post">
+                    <div class="form-group">
+                        <label>Teklif Türü</label>
+                        <select name="tur" required class="form-control">
+                            <option value="">Teklif Türü Seçiniz</option>
+                            <option value="baslatma">Başlatma</option>
+                            <option value="bitirme">Bitirme</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Zaman Dilimi</label>
+                        <select name="zaman_dilimi" required class="form-control">
+                            <option value="">Zaman Dilimi Seçiniz</option>
+                            <option value="Saat">Saat</option>
+                            <option value="Gün">Gün</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Zaman</label>
+                        <input name="zaman" min="1" required class="form-control" type="number" placeholder="Zaman giriniz">
+                    </div>
+
+                    <button id="btn_kaydet" type="submit" class="btn btn-primary">KAYDET</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.uyeler>
+
+@{
+    ViewBag.Title = "Üyeler";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a> 
+    <span class="con_point">> </span><span>Üyeler</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Üyeler Listesi</h3></div>
+
+            @if (ViewBag.UyeEklemeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UyeEklemeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.UyeDuzenlemeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UyeDuzenlemeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.UyeSilmeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UyeSilmeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="add_link"><a href="@Url.Action("Create","Uyeler")" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Üye Ekle</a></div>
+            <div class="tableback">
+                <table class="data_table_pagination table table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Adı Soyadı</th>
+                            <th>Email</th>
+                            <th>Yetki</th>
+                            <th>Durum</th>
+                            <th>Detay</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Adı Soyadı</th>
+                            <th>Email</th>
+                            <th>Yetki</th>
+                            <th>Durum</th>
+                            <th>Detay</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><div class="profile_img"><img src="~/Assets/uploads/profile_img/@item.resim" alt="profil_resmi" width="35" height="35" /></div></td>
+                                <td>@item.adsoy</td>
+                                <td>@item.email</td>
+                                <td>@item.yetki</td>
+                                <td>@item.durum</td>
+                               
+                                <td><a href="@Url.Action("Details","Uyeler",new { id = item.id } )" class="detail"><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+                                <td><a href="@Url.Action("Edit","Uyeler",new { id = item.id } )" style="width:80%" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Düzenle</a></td>
+                                <td><a href="@Url.Action("Delete","Uyeler", new { id = item.id } )" onclick="return confirm('Silinsin mi?')" style="width:80%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Sil</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>             
+        </div>
+    </div>
+</div>

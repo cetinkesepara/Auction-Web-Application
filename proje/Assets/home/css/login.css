@@ -1,0 +1,116 @@
+#login {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#login .uyeGirisi 
+{
+    padding: 30px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 100px 0 rgba(0,0,0,0.1);
+    max-width: 370px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login .uyeGirisi h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#login .uyeGirisi input {
+    max-width: 310px;
+}
+
+#login .form-check-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#login .uyeGirisi button{
+    margin-left: auto;
+    background-color: #009688;
+    border: none;
+}
+
+#login .uyeGirisi button:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+#login .uyeGirisi .l1 {
+    margin-top: 20px;
+}
+
+#login .uyeGirisi .l2 {
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+#login .uyeGirisi a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+@media (max-width: 575px) {
+    #login .uyeGirisi button{
+        margin-left:0;
+        width: 100%;
+    }
+    
+    
+    #login .uyeGirisi .l2, .l1 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+.uyeKayit, .sifreUnut  {
+    background-color: rgba(0,0,0,0.2);
+    display: none;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 100px 0 rgba(0,0,0,0.1);
+}
+
+.uyeKayitKapat, .sifreUnutKapat {
+    text-align: right;
+    margin: 10px;
+}
+
+.uyeKayitKapat a, .sifreUnutKapat a{
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: rgba(0, 150, 136, 1);
+}
+
+.uyeKayitKapat a:hover, .sifreUnutKapat a:hover{
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+.uyeKayit h3, .sifreUnut h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.uyeKayit button, .sifreUnut button{
+    background-color: #009688;
+    border: none;
+    width: 100%;
+}
+
+.uyeKayit button:hover, .sifreUnut button:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+

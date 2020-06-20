@@ -1,0 +1,85 @@
+﻿@model proje.Areas.admin.Models.kargolar
+
+@{
+    ViewBag.Title = "Firma_kargo_islem";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><a href="@Url.Action("FirmaKargolari","Kargolar")">Firma Kargoları</a>
+    <span class="con_point">> </span><span>Firma Kargo İşlemi</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Firma-Üye İşlem Sayfası</h3></div>
+            <div class="teklif_islemler">
+                <form method="post" action="@Url.Action("Firma_kargo_islem", "Kargolar", new { kargo_id = Model.id })">
+                   
+                        <select name="kargo_islem">
+                            <option value="">İŞLEM SEÇİNİZ</option>
+                            @if (Model.durum == "Kargolama İşlemi Bekleniyor")
+                            {
+                                <option value="1">Kargo yola çıktı olarak işaretle.</option>
+                            }
+                            @if (Model.durum == "Kargo Yola Çıktı")
+                            {
+                                <option value="2">Kargo teslim edildi olarak işaretle.</option>
+                            }
+                            @if (Model.durum == "Kargo Teslim Edildi")
+                            {
+                                <option value="3">Kargonun teslim edildiği onaylanmıştır. Kargo ve teklifler tablosunu temizle.</option>
+                            }
+                        </select>
+                   
+                    <input type="submit" class="btn btn-info btn-medium" value="Onayla" style="width:100%;margin-top:10px" />
+                </form>
+            </div>
+            <div class="teklif_urun_kisi">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="teklif_urun_resmi text-center"><img width="187" height="200" src="~/Assets/uploads/products_img/@Model.urunler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Firma Yetkilisi</th>
+                                    <td><a href="@Url.Action("Details","Uyeler", new { id = Model.urunler.uye_id } )">@Model.urunler.uyeler.adsoy</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@Model.urunler.adi</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="teklif_uye_resmi text-center"><img width="187" height="200" src="~/Assets/uploads/profile_img/@Model.uyeler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Alıcı Üye</th>
+                                    <td><a href="@Url.Action("Details","Uyeler", new { id = Model.uyeler.id } )">@Model.uyeler.adsoy</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Alıcı Telefon</th>
+                                    <td>@Model.uyeler.telefon</td>
+                                </tr>
+                                <tr>
+                                    <th>Alıcı Adres</th>
+                                    <td>@Model.uyeler.adres</td>
+                                </tr>
+                                <tr>
+                                    <th>Alıcı Email</th>
+                                    <td>@Model.uyeler.email</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

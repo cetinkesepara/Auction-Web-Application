@@ -1,0 +1,57 @@
+body {
+  background: linear-gradient(90deg, #DFE0E2 1px, transparent 1%) center, linear-gradient(#DFE0E2 1px, transparent 1%) center, #fff;
+  background-size: 2px 2px;
+}
+
+.login_form {
+    margin-top: 140px;
+     
+}
+
+.login_form form{
+    text-align: center;
+    border: 1px solid #1EA075;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px 30px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.1);
+}
+
+.login_form h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #585858;
+    text-align: center;
+}
+
+.login_form .fa {
+    color: #1EA075;
+    margin-right: 5px;
+}
+
+.login_form input {
+    max-width: 350px;
+    border-color: #1EA075;
+}
+
+.login_form .btn {
+    width: 100%;
+    background-color: #1EA075;
+    border: none;
+}
+
+.login_form input::placeholder {
+    color: #bbb;
+}
+
+/* Alert - Hata mesajı*/
+
+.alert {
+    padding-top: 0px;
+}
+.close .fa{
+    color: #a9a9a9;
+    font-size: 16px;
+}

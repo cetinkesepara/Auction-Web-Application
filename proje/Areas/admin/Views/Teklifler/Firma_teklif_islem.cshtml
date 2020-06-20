@@ -1,0 +1,82 @@
+﻿@model proje.Areas.admin.Models.teklifler
+
+@{
+    ViewBag.Title = "Firma_teklif_islem";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("FirmaTeklifler", "Teklifler")">Firma Teklifler</a>
+    <span class="con_point">> </span><span>Firma Teklif İşlemleri</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Firma Teklif İşlemleri Sayfası</h3></div>
+            <div class="teklif_islemler">
+                <form method="post" action="@Url.Action("Firma_teklif_islem", "Teklifler", new { teklif_id = Model.id })">
+                    <select name="teklif_islem">
+                        <option value="">İŞLEM SEÇİNİZ</option>
+
+                        @if (Model.urunler.taban_fiyati > Model.teklif && Model.durum == "Yok")
+                        {
+                            <option value="1">Taban fiyatı verilen en yüksek tekliften küçük, açık arttırmayı iptal et.</option>
+                        }
+                        else if (Model.urunler.taban_fiyati <= Model.teklif && Model.durum == "Yok")
+                        {
+                            <option value="2">Kaybeden kişilerin bakiyesini geri yükle ve kazanan için kargo talebi oluştur.</option>
+                        }
+
+
+                    </select>
+                    <input type="submit" class="btn btn-info btn-medium" value="Onayla" style="width:100%;margin-top:10px" />
+                </form>
+            </div>
+            <div class="teklif_urun_kisi">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="teklif_urun_resmi text-center"><img width="187" height="200" src="~/Assets/uploads/products_img/@Model.urunler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Firma Yetkilisi</th>
+                                    <td><a href="@Url.Action("Details","Uyeler", new { id = Model.urunler.uye_id } )">@Model.urunler.uyeler.adsoy</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@Model.urunler.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Taban Fiyatı</th>
+                                    <td>@Model.urunler.taban_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Tavan Fiyatı</th>
+                                    <td>@Model.urunler.tavan_fiyati TL</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="teklif_uye_resmi text-center"><img width="187" height="200" src="~/Assets/uploads/profile_img/@Model.uyeler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Kazanan Üye</th>
+                                    <td><a href="@Url.Action("Details","Uyeler", new { id = Model.uyeler.id } )">@Model.uyeler.adsoy</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Teklif Miktarı</th>
+                                    <td>@Model.teklif TL</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

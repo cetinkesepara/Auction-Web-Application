@@ -1,0 +1,334 @@
+/* SÜTUN SIFIRLAMA */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+
+}
+
+
+/* NAVBAR CSS KOMUTLARI */
+.navbar {
+    background-color: #009688;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.1);
+    z-index: 99999;
+}
+
+#navbar ul .nav-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}
+
+#navbar ul .nav-link:hover {
+    background-color: #009082;
+}
+
+#navbar .navbar-toggler{
+    border-color: #fff;
+}
+
+#navbar .navbar-toggler-icon {
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* SLIDER CSS KOMUTLARI*/
+#slider {
+    margin-top: 80px;
+     display:none;
+}
+
+
+#slider .slider div {
+    
+    height: 300px;
+}
+
+/* FİLTRELER CSS KOMUTLARI */
+#urunler {
+    margin-top:60px;
+}
+
+
+#urunler .filtre {
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 100px 0 rgba(0,0,0,0.1);
+}
+
+#urunler #filtreMobileTitle {
+    display: none;
+    text-align: center;
+    background-color: #009688;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#urunler #filtreMobileTitle:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+#urunler .filtre h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+#urunler .filtre label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+}
+
+#urunler .filtre .btn {
+    width: 100%;
+    background-color: #009688;
+    color: #fff;
+    border: none;
+}
+
+#urunler .filtre .btn:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+
+/* KARTLAR CSS KOMUTLARI */
+#urunler .card{
+    background-color: #fff;
+    padding: 8px;
+    margin-top: 20px;
+    border:none;
+    
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 100px 0 rgba(0,0,0,0.1);
+    -moz-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+}
+
+#urunler .card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.2);
+}
+
+#urunler .card img {
+    max-width: 100%;
+    height: 175px;
+    object-fit: cover;
+}
+
+#urunler .card h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+
+}
+
+#urunler .card .b1 {
+    background-color: #F6F7F9;
+    margin-top: 8px;
+    padding-top: 12px;
+    margin-bottom: 8px;
+}
+
+#urunler .card .b1 h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#urunler .card .b1 .time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+
+    -webkit-transition: font-size 2s ease-out;
+    -moz-transition: font-size 2s ease-out;
+    -o-transition: font-size 2s ease-out;
+    transition: font-size 2s ease-out;
+} 
+
+#urunler .card .b1 .button_gav {
+    display:block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    width: 85%;
+    height: 40px;
+    background-color: #009688;
+    border: none;
+    color: #fff;
+    margin-top: -5px;
+    margin-bottom: 7px;
+    margin-left: 8px;
+    line-height:45px;
+}
+
+#urunler .card .b1 .button_gav:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+#urunler .card .b1 .button_gav .fa {
+    color: #fff;
+}
+
+#urunler .card .b2 {
+    background-color: #F6F7F9;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+#urunler .card .b2 h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#urunler .card .b2 .count{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    
+} 
+
+#urunler .card .b2 .min {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    margin-top: -5px;
+}
+
+#urunler .card .b2 .max {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+}
+
+#urunler .card .b2 .min_ {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
+
+#urunler .card .b2 .max_ {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
+
+
+/* Footer CSS KODLARI */
+
+#footer {
+    background-color: #E9EBEE;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.1);
+}
+
+#footer h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+#footer a { 
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #009688;
+}
+
+/* Copyright */
+
+#copyright {
+    padding: 10px;
+}
+
+#copyright .copy {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #000;
+    text-decoration: none;
+}
+
+#copyright .uSoz {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+
+#bizeyazin, #nasil_calisir, #iletisim, #hakkinda {
+    margin-top: 80px;
+}
+
+#bizeyazin h3{
+    text-align:center;
+}
+
+@media (max-width: 1199px) { 
+
+}
+
+@media (max-width: 991px) { 
+
+}
+
+@media (max-width: 767px) { 
+
+/*Filtreleme Mobil Dönüşüm*/
+    #urunler #filtreMobileTitle {
+        display: block;
+    }
+    
+    #urunler .filtre {
+        display: none;
+    }
+
+    
+
+/*Footer*/
+    #footer h3 {
+        margin-top: 10px;
+    }
+
+   
+}
+
+
+
+
+

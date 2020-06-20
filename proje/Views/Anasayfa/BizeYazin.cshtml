@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "BizeYazin";
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+<section id="bizeyazin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>BİZİMLE İLETİŞİME GEÇİN</h3>
+
+                @if (ViewBag.iletisim_mesaj != null)
+                {
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                            <i class="ace-icon fa fa-times"></i>
+                        </button><br>
+                        <div>
+                            @ViewBag.iletisim_mesaj
+                        </div>
+                        <br>
+                    </div>
+                }
+
+
+                <div class="bizeYazin">
+                    <form action="@Url.Action("BizeYazin","Anasayfa")" method="post">
+                        <div class="form-group">
+                            <label for="adsoy">Adınız ve Soyadınız</label>
+                            <input required type="text" name="adsoy" class="form-control" id="adsoy" placeholder="Adınız ve soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Adresiniz</label>
+                            <input required type="email" name="email" class="form-control" id="email" placeholder="Email Adresiniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefon">Telefon Numaranız</label>
+                            <input required type="text" name="telefon" class="form-control" id="telefon" placeholder="Telefon Numaranız">
+                        </div>
+                        <div class="form-group">
+                            <label for="urun_editor">Mesajınız</label>
+                            <textarea name="mesaj" required style="width:100%" id="urun_editor"></textarea>
+                        </div>
+
+                        <button id="btn_kaydet" type="submit" style="width:100%" class="btn btn-primary">MESAJI GÖNDER</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

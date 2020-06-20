@@ -1,0 +1,74 @@
+﻿@model  proje.Areas.admin.Models.urunler
+
+@{
+    ViewBag.Title = "urun_duzenle";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <a href="@Url.Action("Urun_listeleme","Hesabim")">Ürün Listeleme</a>
+    <span class="con_point">> </span> <a href="@Url.Action("Urun_detay", "Hesabim", new { urun_id = Model.id})">Ürün Detay</a>
+    <span class="con_point">> </span><span>Ürün Düzenle</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h4>Ürün Düzenleme Formu</h4></div>
+
+            <div class="uye_ekleme_formu">
+                <form action="@Url.Action("Urun_duzenle","Hesabim", new { urun_id = Model.id })" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Ürün Adı</label>
+                        <input value="@Model.adi" name="adi" minlength="3" maxlength="30" required class="form-control" type="text" placeholder="Ürün Adı">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select name="kategori" required class="form-control">
+                            @foreach (var item in ViewBag.Kategoriler)
+                            {
+                                if (item.id == Model.kategori_id)
+                                {
+                                    <option value="@Model.kategori_id">@item.adi</option>
+                                }
+                            }
+
+                            @foreach (var item in ViewBag.Kategoriler)
+                            {
+
+                                <option value="@item.id">@item.adi</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Taban Fiyatı</label>
+                        <input value="@Model.taban_fiyati" name="taban_fiyati" minlength="1" required class="form-control" type="text" placeholder="Taban Fiyatı">
+                    </div>
+                    <div class="form-group">
+                        <label>Tavan Fiyatı</label>
+                        <input value="@Model.tavan_fiyati" name="tavan_fiyati" minlength="1" required class="form-control" type="text" placeholder="Tavan Fiyatı">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <input value="@Model.description" name="description" minlength="1" required class="form-control" type="text" placeholder="Meta Description">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keywords</label>
+                        <input value="@Model.keywords" name="keywords" minlength="1" required class="form-control" type="text" placeholder="Meta Keywords">
+                    </div>
+
+                    <div class="form-group">
+                        <h6 class="text-center">Ürün Özellik ve Tanıtımı</h6>
+                        <textarea name="aciklama" required style="width:100%" id="urun_editor">@Model.aciklama</textarea>
+                    </div>
+
+                    <button id="btn_kaydet" type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

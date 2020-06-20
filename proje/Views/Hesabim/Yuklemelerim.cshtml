@@ -1,0 +1,211 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.bakiye_yukle>
+@{
+    ViewBag.Title = "Yuklemelerim";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> <a href="@Url.Action("Yuklemelerim","Hesabim")">Yüklemelerim</a>
+</div>
+
+
+@if (ViewBag.yukleme_sil != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+            <i class="ace-icon fa fa-times"></i>
+        </button><br>
+        <div>
+            @ViewBag.yukleme_sil
+        </div>
+        <br>
+    </div>
+}
+
+<div class="table-list">
+    <table class="data_table_pagination table table-striped" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Miktar</th>
+                <th>Tarih</th>
+                <th>Durum</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Miktar</th>
+                <th>Tarih</th>
+                <th>Durum</th>
+                <th>Sil</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.miktar TL</td>
+                    <td>@item.tarih</td>
+                    <td>
+
+                        @if (item.durum == "Onay Bekleniyor")
+                        {
+                            <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Bankadan onay bekleniyor">@item.durum</div>
+                        }
+                        @if (item.durum == "Onaylandı")
+                        {
+                            <div style="background-color:#009688;color:#fff;padding:5px" title="Ödeme onaylandı">@item.durum</div>
+                        }
+                        @if (item.durum == "Reddedildi")
+                        {
+                            <div style="background-color:#D9534F;color:#fff;padding:5px" title="İşlem yapılamadı">@item.durum</div>
+                        }
+
+                    </td>
+                    <td>
+                        @if (item.durum == "Onaylandı" || item.durum == "Reddedildi")
+                        {
+                            <a href="@Url.Action("Yuklemelerim_sil","Hesabim", new { b_id = item.id } )" onclick="return confirm('Silinsin mi?')" style="width:80%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Sil</a>
+
+                        }
+                        else
+                        {
+                            <a style="width:80%;background-color:#C1C1C1;border-color:#C1C1C1;color:#fff" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Silinemez</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="mobile-list">
+    @{ int i = 0, s_list = 1;}
+
+    <div class="pag text-center">
+        <ul>
+            <li><button onclick="sol_btn()" class="sol_btn"><<</button></li>
+            <li><button onclick="sag_btn()" class="sag_btn">>></button></li>
+            <li class="s_konum">1</li>
+            <li>/</li>
+            <li class="ss_text"></li>
+        </ul>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        i++;
+
+        <div class="item s@(s_list)_list">
+
+            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#deneme@(i)" aria-expanded="false" aria-controls="deneme@(i)">
+
+                <div class="row">
+                    <div class="col-12">
+                        <b>Miktar:</b> @item.miktar TL
+                    </div>
+                    <div class="col-12">
+                        <b>Tarih:</b> @item.tarih
+                    </div>
+                    <div class="col-12">
+                        <b>DURUM:</b>
+                        @if (item.durum == "Onay Bekleniyor")
+                        {
+                            <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Bankadan onay bekleniyor.">@item.durum</div>
+                        }
+                        @if (item.durum == "Onaylandı")
+                        {
+                            <div style="background-color:#009688;color:#fff;padding:5px" title="Ödeme onaylandı.">@item.durum</div>
+                        }
+                        @if (item.durum == "Reddedildi")
+                        {
+                            <div style="background-color:#D9534F;color:#fff;padding:5px" title="İşlem yapılamadı.">@item.durum</div>
+                        }
+                    </div>
+                </div>
+            </a>
+            <div class="collapse" id="deneme@(i)">
+                <div class="row">
+                    <div class="col-12">
+                        @if (item.durum == "Onaylandı" || item.durum == "Reddedildi")
+                        {
+                            <a href="@Url.Action("Yuklemelerim_sil","Hesabim", new { b_id = item.id } )" onclick="return confirm('Silinsin mi?')" style="width:100%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Sil</a>
+
+                        }
+                        else
+                        {
+
+                            <a title="İşlem kontrol ediliyor!" style="width:100%;background-color:#C1C1C1;border-color:#C1C1C1;color:#fff" class="detail btn btn-danger btn-sm"><i class="fa fa-trash-o" style="color:#fff" aria-hidden="true"></i>Silinemez</a>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        if (i == 10 * s_list)
+        {
+            s_list += 1;
+        }
+    }
+
+    <div class="pag text-center">
+        <ul>
+            <li><button onclick="sol_btn()" class="sol_btn"><<</button></li>
+            <li><button onclick="sag_btn()" class="sag_btn">>></button></li>
+            <li class="s_konum">1</li>
+            <li>/</li>
+            <li class="ss_text"></li>
+        </ul>
+    </div>
+    <input type="hidden" value="1" id="sayfa_konum" />
+    <input type="hidden" value="@s_list" id="sayfa_sayisi" />
+</div>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        $(".ss_text").html(sayfa_sayisi);
+
+        if (sayfa_sayisi > 1) {
+            for (i = 2; i <= sayfa_sayisi; i++) {
+                $(".s"+ i +"_list").hide();
+            }
+        }
+    });
+
+    function sag_btn() {
+        var sayfa_konum = $("#sayfa_konum").val();
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        if (sayfa_konum < sayfa_sayisi) {
+            $(".s" + sayfa_konum + "_list").hide();
+            $("#sayfa_konum").val(parseInt(sayfa_konum) + 1);
+            $(".s" + $("#sayfa_konum").val() + "_list").show();
+            $(".s_konum").html($("#sayfa_konum").val());
+        }
+    }
+
+    function sol_btn() {
+        var sayfa_konum = $("#sayfa_konum").val();
+        var sayfa_sayisi = $("#sayfa_sayisi").val();
+
+        if (sayfa_konum > 1) {
+            $(".s" + sayfa_konum + "_list").hide();
+            $("#sayfa_konum").val(parseInt(sayfa_konum) - 1);
+            $(".s" + $("#sayfa_konum").val() + "_list").show();
+            $(".s_konum").html($("#sayfa_konum").val());
+        }
+
+    }
+
+</script>
+
+
+

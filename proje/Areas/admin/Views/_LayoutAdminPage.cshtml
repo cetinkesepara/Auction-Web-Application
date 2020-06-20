@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Assets/admin/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="@Url.Content("~/Assets/admin/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Assets/DataTables/datatables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/admin/css/main.css")" rel="stylesheet">
+</head>
+<body>
+
+    <section id="navbar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="logo"><a href="#"><i class="fa fa-assistive-listening-systems" aria-hidden="true"></i> Admin Panel</a></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profil">
+
+                        <a class="menu_toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                        <a id="profile-down-link" href="#"><img src="~/Assets/uploads/profile_img/@Session["resim"]" alt="foto" width="40" height="40"> @Session["adsoy"]</a>
+                        <div class="profile-down">
+                            <a href="@Url.Action("Profil","Home")"><i class="fa fa-user" aria-hidden="true"></i> Profil</a>
+                            <a href="@Url.Action("Logout", "Login")"><i class="fa fa-power-off" aria-hidden="true"></i> Çıkış</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="sidebar">
+
+                        @{  string anasayfa = "", ayarlar="",uyeler = "", yuklemeler= "", urunler = "", firmaUrunleri= "", saticiUrunleri= "", onayBekleyenler= "", kargolar= "", firmaKargolari= "", satUyeKargolari= "", teklifler= "",saticiTeklifler= "",firmaTeklifler= "", kategoriler= "",mesajlar= "", teklifButonlari= "", teklifZamanlari= "", collapse_teklifler = "collapse" , collapse_urunler = "collapse", collapse_kargolar = "collapse";
+                            if (ViewBag.ActiveMenu == "Anasayfa") { anasayfa = "active-menu"; }
+                            if (ViewBag.ActiveMenu == "Uyeler") { uyeler = "active-menu"; }
+                            if (ViewBag.ActiveMenu == "Urunler") { urunler = "active-menu"; collapse_urunler = ""; }
+                            if (ViewBag.ActiveSubMenu == "FirmaUrunleri") { firmaUrunleri = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "SaticiUrunleri") { saticiUrunleri = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "OnayBekleyenler") { onayBekleyenler = "active-sub-menu"; }
+                            if (ViewBag.ActiveMenu == "Kargolar") { kargolar = "active-menu"; collapse_kargolar = ""; }
+                            if (ViewBag.ActiveSubMenu == "FirmaKargolari") { firmaKargolari = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "SatUyeKargolari") { satUyeKargolari = "active-sub-menu"; }
+                            if (ViewBag.ActiveMenu == "Teklifler") { teklifler = "active-menu"; collapse_teklifler = ""; }
+                            if (ViewBag.ActiveSubMenu == "SaticiTeklifler") { saticiTeklifler = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "FirmaTeklifler") { firmaTeklifler = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "TeklifButonlari") { teklifButonlari = "active-sub-menu"; }
+                            if (ViewBag.ActiveSubMenu == "TeklifZamanlari") { teklifZamanlari = "active-sub-menu"; }
+                            if (ViewBag.ActiveMenu == "Yuklemeler") { yuklemeler = "active-menu"; }
+                            if (ViewBag.ActiveMenu == "Kategoriler") { kategoriler = "active-menu"; }
+                            if (ViewBag.ActiveMenu == "Mesajlar") { mesajlar = "active-menu"; }
+                            if (ViewBag.ActiveMenu == "Ayarlar") { ayarlar = "active-menu"; }
+
+                        }
+
+                        <ul>
+                            <li class="menu-item @anasayfa">
+                                <a href="@Url.Action("Index","Home")"><i class="fa fa-tachometer" aria-hidden="true"></i><span class="menu-text">Anasayfa</span></a>
+                            </li>
+                            <li class="menu-item @uyeler">
+                                <a href="@Url.Action("Index","Uyeler")"><i class="fa fa-users" aria-hidden="true"></i><span class="menu-text">Üyeler</span></a>
+                            </li>
+                            <li class="menu-item @urunler">
+                                <a data-toggle="collapse" href="#urunlerim" aria-expanded="false" aria-controls="urunlerim">
+                                    <i class="fa fa-barcode" aria-hidden="true"></i>Ürünler
+                                </a>
+                                <div class="@collapse_urunler" id="urunlerim">
+                                    <a class="sub-menu @firmaUrunleri" href="@Url.Action("FirmaUrunleri","Urunler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Firma Ürünleri
+                                    </a><br />
+                                    <a class="sub-menu @saticiUrunleri" href="@Url.Action("SaticiUrunleri","Urunler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Satıcı Ürünleri
+                                    </a><br />
+                                    <a class="sub-menu @onayBekleyenler" href="@Url.Action("OnayBekleyenler","Urunler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Onay Bekleyenler
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="menu-item @kargolar">
+                                <a data-toggle="collapse" href="#kargolar" aria-expanded="false" aria-controls="kargolar">
+                                    <i class="fa fa-truck" aria-hidden="true"></i>Kargolar
+                                </a>
+                                <div class="@collapse_kargolar" id="kargolar">
+                                    <a class="sub-menu @firmaKargolari" href="@Url.Action("FirmaKargolari","Kargolar")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Firma Kargoları
+                                    </a><br />
+                                    <a class="sub-menu @satUyeKargolari" href="@Url.Action("SatUyeKargolari","Kargolar")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Satıcı-Üye Kargoları
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="menu-item @teklifler">
+                                <a data-toggle="collapse" href="#teklifler" aria-expanded="false" aria-controls="teklifler">
+                                    <i class="fa fa-gavel" aria-hidden="true"></i>Teklifler
+                                </a>
+                                <div class="@collapse_teklifler" id="teklifler">
+                                    <a class="sub-menu @firmaTeklifler" href="@Url.Action("FirmaTeklifler","Teklifler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Firma Teklifler
+                                    </a><br />
+                                    <a class="sub-menu @saticiTeklifler" href="@Url.Action("SaticiTeklifler","Teklifler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Satıcı Teklifler
+                                    </a><br />
+                                    <a class="sub-menu @teklifButonlari" href="@Url.Action("TeklifButonlari","Teklifler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Teklif Butonları
+                                    </a><br/>
+                                    <a class="sub-menu @teklifZamanlari" href="@Url.Action("TeklifZamanlari","Teklifler")">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        Teklif Zamanları
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="menu-item @yuklemeler">
+                                <a href="@Url.Action("Yuklemeler","Uyeler")"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i><span class="menu-text">Yüklemeler</span></a>
+                            </li>
+                            <li class="menu-item @kategoriler">
+                                <a href="@Url.Action("Index","Kategoriler")"><i class="fa fa-tasks" aria-hidden="true"></i><span class="menu-text">Kategoriler</span></a>
+                            </li>
+                            <li class="menu-item @mesajlar">
+                                <a href="@Url.Action("Iletisim","Mesajlar")"><i class="fa fa-envelope" aria-hidden="true"></i><span class="menu-text">Mesajlar</span></a>
+                            </li>
+                            <li class="menu-item @ayarlar">
+                                <a href="@Url.Action("Ayarlar","Home")"><i style="color:#D15B47" class="fa fa-cogs" aria-hidden="true"></i><span class="menu-text">Ayarlar</span></a>
+                            </li>
+                        </ul>
+                
+                    </div>
+
+                </div>
+                <div class="col-md-10">
+                    <div class="main_content">
+                        @RenderBody()
+                    </div>
+                    <div class="fix-position"></div>
+                    <div class="footer text-center">
+                        <div class="copyright"><span>cetinkesepara@gmail.com</span> <i class="fa fa-copyright" aria-hidden="true"></i> <span>2018</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+
+
+    <script src="@Url.Content("~/Assets/admin/js/jquery-3.2.1.min.js")"></script>
+    <script src="@Url.Content("~/Assets/admin/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Assets/DataTables/datatables.min.js")"></script>
+    <script src="@Url.Content("~/Assets/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Assets/ckeditor/config.js")"></script>
+    <script src="@Url.Content("~/Assets/admin/js/main.js")"></script>
+    <script>
+        /*Tablolar için pagination ayarları*/
+        $(document).ready(function () {
+            $('.data_table_pagination').DataTable({
+                "language": {
+                    "info": "_TOTAL_ Sonuçtan _START_ - _END_ arası gösteriliyor",
+                    "infoEmpty": "0 Sonuçtan 0 - 0 arası gösteriliyor",
+                    "lengthMenu": "_MENU_ Sonucu göster",
+                    "search": "Arama:",
+                    "emptyTable": "Tabloda veri yok",
+                    "paginate": {
+                        "next": "Sonraki",
+                        "previous": "Önceki"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

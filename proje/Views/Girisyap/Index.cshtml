@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+
+
+<section id="login">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            @if (ViewBag.email_hata != null)
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.email_hata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.kayit_onay != null)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.kayit_onay
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="uyeGirisi">
+                <form action="@Url.Action("Index","Girisyap")" method="post">
+                    <h3>Üye Girişi</h3>
+
+                    @if (ViewBag.LoginError != null)
+                    {
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                                <i class="ace-icon fa fa-times"></i>
+                            </button><br>
+                            <div>
+                                @ViewBag.LoginError
+                            </div>
+                            <br>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" required name="email" placeholder="E-mail Adresiniz">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" required name="sifre" placeholder="Şifreniz">
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                Beni Hatırla
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                    </div>
+                    <div class="form-inline">
+                        <div class="l1">
+                            <a href="#">Şifremi Unuttum</a>
+                        </div>
+                        <div class="l2">
+                            <a href="#">Üye Olmak İstiyorum</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="uyeKayit">
+                <div class="uyeKayitKapat"><a href="#">x</a></div>
+                <div class="uyeKayitForm">
+                    <form method="post" action="@Url.Action("KayitOl","Girisyap")">
+                        <h3>Üye Kaydı</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required name="uyeAdi" placeholder="İsminiz *">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required name="soyAd" placeholder="Soyisminiz *">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" required id="email" name="email" placeholder="E-mail Adresiniz *">
+                        </div>
+                        <div id="email_hata" style="color:#D15B47">Girilen Email Adresleri Eşleşmiyor </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" required id="email_tekrar" name="email_tekrar" placeholder="E-mail Adresinizi Tekrar Giriniz *">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" minlength="6" maxlength="20" class="form-control" required id="sifre" name="sifre" placeholder="Şifreniz *">
+                        </div>
+                        <div id="sifre_eksik" style="color:#D15B47">Şifre 6 - 20 karakter olabilir </div>
+                        <div id="sifre_hata" style="color:#D15B47">Girilen Şifreler Eşleşmiyor </div>
+                        <div class="form-group">
+                            <input type="password" minlength="6" maxlength="20" class="form-control" required id="sifre_tekrar" name="sifre_tekrar" placeholder="Şifreniz Tekrar Giriniz *">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required name="telefon" placeholder="Telefon Numaranız *">
+                        </div>
+                        <div class="form-group">
+                            <select required class="form-control" name="sehir">
+                                <option value="" selected disabled hidden>Şehir</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="Ankara">Ankara</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Adana">Adana</option>
+                                <option value="Adıyaman">Adıyaman</option>
+                                <option value="Afyonkarahisar">Afyonkarahisar</option>
+                                <option value="Ağrı">Ağrı</option>
+                                <option value="Aksaray">Aksaray</option>
+                                <option value="Amasya">Amasya</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Ardahan">Ardahan</option>
+                                <option value="Artvin">Artvin</option>
+                                <option value="Aydın">Aydın</option>
+                                <option value="Balıkesir">Balıkesir</option>
+                                <option value="Bartın">Bartın</option>
+                                <option value="Batman">Batman</option>
+                                <option value="Bayburt">Bayburt</option>
+                                <option value="Bilecik">Bilecik</option>
+                                <option value="Bingöl">Bingöl</option>
+                                <option value="Bitlis">Bitlis</option>
+                                <option value="Bolu">Bolu</option>
+                                <option value="Burdur">Burdur</option>
+                                <option value="Bursa">Bursa</option>
+                                <option value="Çanakkale">Çanakkale</option>
+                                <option value="Çankırı">Çankırı</option>
+                                <option value="Çorum">Çorum</option>
+                                <option value="Denizli">Denizli</option>
+                                <option value="Diyarbakır">Diyarbakır</option>
+                                <option value="Düzce">Düzce</option>
+                                <option value="Edirne">Edirne</option>
+                                <option value="Elazığ">Elazığ</option>
+                                <option value="Erzincan">Erzincan</option>
+                                <option value="Erzurum">Erzurum</option>
+                                <option value="Eskişehir">Eskişehir</option>
+                                <option value="Gaziantep">Gaziantep</option>
+                                <option value="Giresun">Giresun</option>
+                                <option value="Gümüşhane">Gümüşhane</option>
+                                <option value="Hakkâri">Hakkâri</option>
+                                <option value="Hatay">Hatay</option>
+                                <option value="Iğdır">Iğdır</option>
+                                <option value="Isparta">Isparta</option>
+                                <option value="Kahramanmaraş">Kahramanmaraş</option>
+                                <option value="Karabük">Karabük</option>
+                                <option value="Karaman">Karaman</option>
+                                <option value="Kars">Kars</option>
+                                <option value="Kastamonu">Kastamonu</option>
+                                <option value="Kayseri">Kayseri</option>
+                                <option value="Kırıkkale">Kırıkkale</option>
+                                <option value="Kırklareli">Kırklareli</option>
+                                <option value="Kırşehir">Kırşehir</option>
+                                <option value="Kilis">Kilis</option>
+                                <option value="Kocaeli">Kocaeli</option>
+                                <option value="Konya">Konya</option>
+                                <option value="Kütahya">Kütahya</option>
+                                <option value="Malatya">Malatya</option>
+                                <option value="Manisa">Manisa</option>
+                                <option value="Mardin">Mardin</option>
+                                <option value="Mersin">Mersin</option>
+                                <option value="Muğla">Muğla</option>
+                                <option value="Muş">Muş</option>
+                                <option value="Nevşehir">Nevşehir</option>
+                                <option value="Niğde">Niğde</option>
+                                <option value="Ordu">Ordu</option>
+                                <option value="Osmaniye">Osmaniye</option>
+                                <option value="Rize">Rize</option>
+                                <option value="Sakarya">Sakarya</option>
+                                <option value="Samsun">Samsun</option>
+                                <option value="Siirt">Siirt</option>
+                                <option value="Sinop">Sinop</option>
+                                <option value="Sivas">Sivas</option>
+                                <option value="Şırnak">Şırnak</option>
+                                <option value="Tekirdağ">Tekirdağ</option>
+                                <option value="Tokat">Tokat</option>
+                                <option value="Trabzon">Trabzon</option>
+                                <option value="Tunceli">Tunceli</option>
+                                <option value="Şanlıurfa">Şanlıurfa</option>
+                                <option value="Uşak">Uşak</option>
+                                <option value="Van">Van</option>
+                                <option value="Yalova">Yalova</option>
+                                <option value="Yozgat">Yozgat</option>
+                                <option value="Zonguldak">Zonguldak</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea required class="form-control" name="adres" placeholder="Kargo işlemleri için adresinizi tam olarak girmelisiniz *" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydı Tamamla</button>
+                    </form>
+                </div>
+            </div>
+            <div class="sifreUnut">
+                <div class="sifreUnutKapat"><a href="#">x</a></div>
+                <div class="sifreUnutForm">
+                    <form>
+                        <h3>Şifremi Unuttum</h3>
+                        <div class="form-group">
+                            <input type="email" class="form-control" required name="email" placeholder="E-mail Adresiniz *">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Şifremi Sıfırla</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        setInterval(function () { kayitKontrol(); }, 1500);
+    });
+
+    function kayitKontrol() {
+        var email = $("#email").val();
+        var email_tekrar = $("#email_tekrar").val();
+        var sifre = $("#sifre").val();
+        var sifre_tekrar = $("#sifre_tekrar").val();
+
+        if (email != email_tekrar) {
+            $("#email_hata").show();
+        }
+        else {
+            $("#email_hata").hide();
+        }
+
+        if (sifre != sifre_tekrar) {
+            $("#sifre_hata").show();
+        }
+        else {
+            $("#sifre_hata").hide();
+        }
+
+        if (sifre.length > 0 && sifre.length < 6) {
+            $("#sifre_eksik").show();
+        }
+        else {
+            $("#sifre_eksik").hide();
+        }
+    }
+</script>
+

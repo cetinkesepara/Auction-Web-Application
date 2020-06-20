@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+
+    <link href="~/Assets/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="~/Assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/css/login.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="login_form">
+                    <form action="@Url.Action("Index","Login")" method="post">
+                        <h3><i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>Admin Panel</h3>
+                        
+                                                @if (ViewBag.LoginError != null)
+                        {
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <i class="ace-icon fa fa-times"></i>
+                                </button><br>
+                                 @ViewBag.LoginError
+                                <br>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" required name="email" placeholder="E-mail Adresiniz">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" required name="sifre" placeholder="Şifreniz">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Giriş Yap">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Assets/admin/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/admin/js/bootstrap.min.js"></script>
+</body>
+</html>

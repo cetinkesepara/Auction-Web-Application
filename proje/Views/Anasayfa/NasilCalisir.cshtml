@@ -1,0 +1,21 @@
+﻿@model  proje.Areas.admin.Models.ayarlar
+
+@{
+    ViewBag.Title = "NasilCalisir";
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+<section id="nasil_calisir">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>UYGULAMA NASIL ÇALIŞIR ?</h3>
+                <div>
+                    @Html.Raw(Model.nasil_calisir)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

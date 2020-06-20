@@ -1,0 +1,93 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.urunler>
+
+@{
+    ViewBag.Title = "SaticiUrunleri";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Satıcı Ürünleri</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Satıcı Ürünler Listesi</h3></div>
+
+            @if (ViewBag.UrunDuzenlemeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UrunDuzenlemeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.UrunSilmeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UrunSilmeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="tableback">
+                <table class="data_table_pagination table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Ürün Adı</th>
+                            <th>Satıcı Üye</th>
+                            <th>Durum</th>
+                            <th>Yayın Durumu</th>
+                            <th>Başlatma Tarihi</th>
+                            <th>Detay</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Ürün Adı</th>
+                            <th>Satıcı Üye</th>
+                            <th>Durum</th>
+                            <th>Yayın Durumu</th>
+                            <th>Başlatma Tarihi</th>
+                            <th>Detay</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><div class="profile_img"><img src="~/Assets/uploads/products_img/@item.resim" alt="profil_resmi" width="35" height="35" /></div></td>
+                                <td>@item.adi</td>
+                                <td><a href="@Url.Action("Details","Uyeler", new { id = item.uye_id } )">@item.uyeler.adsoy</a></td>
+                                <td>@item.durum</td>
+                                <td>@item.yayin_durumu</td>
+                                <td>@item.baslangic_tarihi</td>
+
+                                <td><a href="@Url.Action("SaticiUrunlerDetay","Urunler",new { id = item.id } )" class="detail"><i class="fa fa-search-plus" aria-hidden="true"></i></a></td>
+                                <td><a href="@Url.Action("SaticiUrunlerDuzenle","Urunler",new { id = item.id } )" style="width:80%" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Düzenle</a></td>
+                                <td><a href="@Url.Action("SaticiUrunSil","Urunler", new { id = item.id } )" onclick="return confirm('Silinsin mi?')" style="width:80%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Sil</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

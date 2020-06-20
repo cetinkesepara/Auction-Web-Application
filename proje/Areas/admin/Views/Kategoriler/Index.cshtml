@@ -1,0 +1,119 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.kategoriler>
+
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Kategoriler</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Kategoriler</h3></div>
+
+            @if (ViewBag.KategoriEkleSonuc != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.KategoriEkleSonuc
+                    </div>
+                    <br>
+                </div>
+            }
+            @if (ViewBag.KategoriEkleHata != null)
+            {
+                <div class="alert alert-danger">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.KategoriEkleHata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.KategoriSil != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.KategoriSil
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.KategoriSilHata != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.KategoriSilHata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="add_link">
+                <form method="post" action="@Url.Action("KategoriEkle","Kategoriler")">
+                    <input class="form-control" style="width:100%" type="text" name="kategori" placeholder="Kategori Adı" />
+                    <input class="form-control" style="width:100%" type="text" name="description" placeholder="Description" />
+                    <input class="form-control" style="width:100%" type="text" name="keywords" placeholder="Keywords" />
+                    <input class="btn btn-success" style="width:100%" type="submit" value="EKLE" />
+                </form>
+            </div>
+            <div class="tableback">
+                <table class="data_table_pagination table table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Durum</th>
+                            <th>Tarih</th>
+                            <th>Description</th>
+                            <th>Keywords</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Durum</th>
+                            <th>Tarih</th>
+                            <th>Description</th>
+                            <th>Keywords</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.adi</td>
+                                <td>@item.durum</td>
+                                <td>@item.tarih</td>
+                                <td>@item.description</td>
+                                <td>@item.keywords</td>
+                                <td><a href="@Url.Action("KategoriSil","Kategoriler", new { id = item.id})" onclick="return confirm('Silinsin mi?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> SİL</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

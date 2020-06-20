@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Hesap_ayarlari";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <a href="@Url.Action("Hesap_ayarlari","Hesabim")">Hesap Ayarları</a>
+</div>
+
+@if (ViewBag.yeni_sifre != null)
+            {
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+            <i class="ace-icon fa fa-times"></i>
+        </button><br>
+        <div>
+            @ViewBag.yeni_sifre
+        </div>
+        <br>
+    </div>
+}
+
+@if (ViewBag.eski_sifre_hata != null)
+            {
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+            <i class="ace-icon fa fa-times"></i>
+        </button><br>
+        <div>
+            @ViewBag.eski_sifre_hata
+        </div>
+        <br>
+    </div>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Hesap Ayarları Sayfası</h3></div>
+
+            <div>
+                <form method="post" action="@Url.Action("Hesap_sifre_degis","Hesabim")">
+                    <div class="form-group">
+                        <input type="password" minlength="6" maxlength="20" class="form-control" required id="eski_sifre" name="eski_sifre" placeholder="Eski Şifreniz *">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" minlength="6" maxlength="20" class="form-control" required id="yeni_sifre" name="yeni_sifre" placeholder="Yeni Şifreniz *">
+                    </div>
+                    <div id="sifre_eksik" style="color:#D15B47">Şifre 6 - 20 karakter olabilir </div>
+                    <div id="sifre_hata" style="color:#D15B47">Girilen Şifreler Eşleşmiyor </div>
+                    <div class="form-group">
+                        <input type="password" minlength="6" maxlength="20" class="form-control" required id="yeni_sifre_tekrar" name="yeni_sifre_tekrar" placeholder="Yeni Şifrenizi Tekrar Giriniz *">
+                    </div>
+                    <button type="submit" style="width:100%" class="btn btn-primary">ŞİFREYİ DEĞİŞTİR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        setInterval(function () { kayitKontrol(); }, 1500);
+    });
+
+    function kayitKontrol() {
+        var sifre = $("#yeni_sifre").val();
+        var sifre_tekrar = $("#yeni_sifre_tekrar").val();
+
+
+        if (sifre != sifre_tekrar) {
+            $("#sifre_hata").show();
+        }
+        else {
+            $("#sifre_hata").hide();
+        }
+
+        if (sifre.length > 0 && sifre.length < 6) {
+            $("#sifre_eksik").show();
+        }
+        else {
+            $("#sifre_eksik").hide();
+        }
+    }
+</script>

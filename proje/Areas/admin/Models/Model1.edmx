@@ -1,0 +1,1168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AuctionTrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="site_adi" Type="varchar" MaxLength="50" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="keywords" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="adres" Type="varchar" MaxLength="50" />
+          <Property Name="sehir" Type="varchar" MaxLength="50" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="hakkimizda" Type="text" />
+          <Property Name="iletisim" Type="text" />
+          <Property Name="nasil_calisir" Type="text" />
+          <Property Name="facebook" Type="varchar" MaxLength="50" />
+          <Property Name="twitter" Type="varchar" MaxLength="50" />
+          <Property Name="instagram" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bakiye_yukle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="miktar" Type="float" Nullable="false" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="engellenen_uyeler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="engelleyen_u_id" Type="int" Nullable="false" />
+          <Property Name="engellenen_u_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="galeriler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="resim" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="itetisim_mesajlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+          <Property Name="mesaj" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="durum" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kargolar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kategoriler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="adi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resim" Type="varchar" MaxLength="50" />
+          <Property Name="durum" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="keywords" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mesajlasmalar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+          <Property Name="mesaj" Type="text" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mesaj_turu" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resim" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teklif_butonlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="miktar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teklif_miktarlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teklif_butonu_id" Type="int" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teklifler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="teklif" Type="int" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urun_teklif_butonlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="teklif_butonu_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resim" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stok" Type="int" Nullable="false" />
+          <Property Name="aciklama" Type="text" Nullable="false" />
+          <Property Name="taban_fiyati" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tavan_fiyati" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="baslangic_tarihi" Type="smalldatetime" />
+          <Property Name="bitis_tarihi" Type="smalldatetime" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="keywords" Type="varchar" MaxLength="50" />
+          <Property Name="uye_id" Type="int" Nullable="false" />
+          <Property Name="kategori_id" Type="int" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="yayin_durumu" Type="varchar" MaxLength="50" />
+          <Property Name="teklif_durumu" Type="varchar" MaxLength="50" />
+          <Property Name="onay_durumu" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="uyeler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sehir" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adres" Type="varchar" MaxLength="50" />
+          <Property Name="resim" Type="varchar" MaxLength="50" />
+          <Property Name="yetki" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="durum" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="tarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="bakiye" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zamanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="zaman_dilimi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="zaman" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_engellenen_uyeler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="engellenen_uyeler" Type="Self.engellenen_uyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="engellenen_uyeler">
+              <PropertyRef Name="engelleyen_u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_engellenen_uyeler_uyeler1">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="engellenen_uyeler" Type="Self.engellenen_uyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="engellenen_uyeler">
+              <PropertyRef Name="engellenen_u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_galeriler_urunler1">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="galeriler" Type="Self.galeriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="galeriler">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kargolar_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="kargolar" Type="Self.kargolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kargolar">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kargolar_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="kargolar" Type="Self.kargolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kargolar">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesajlasmalar_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="mesajlasmalar" Type="Self.mesajlasmalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesajlasmalar">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_teklif_butonlari">
+          <End Role="teklif_butonlari" Type="Self.teklif_butonlari" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teklif_butonlari">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="teklif_butonu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklifler_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="teklifler" Type="Self.teklifler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklifler">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklifler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="teklifler" Type="Self.teklifler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklifler">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_teklif_butonlari_teklif_butonlari">
+          <End Role="teklif_butonlari" Type="Self.teklif_butonlari" Multiplicity="1" />
+          <End Role="urun_teklif_butonlari" Type="Self.urun_teklif_butonlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teklif_butonlari">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urun_teklif_butonlari">
+              <PropertyRef Name="teklif_butonu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_teklif_butonlari_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="urun_teklif_butonlari" Type="Self.urun_teklif_butonlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urun_teklif_butonlari">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunler_kategoriler">
+          <End Role="kategoriler" Type="Self.kategoriler" Multiplicity="1" />
+          <End Role="urunler" Type="Self.urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoriler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urunler">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="urunler" Type="Self.urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urunler">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AuctionTrModelStoreContainer">
+          <EntitySet Name="ayarlar" EntityType="Self.ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bakiye_yukle" EntityType="Self.bakiye_yukle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="engellenen_uyeler" EntityType="Self.engellenen_uyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="galeriler" EntityType="Self.galeriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="itetisim_mesajlari" EntityType="Self.itetisim_mesajlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kargolar" EntityType="Self.kargolar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategoriler" EntityType="Self.kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mesajlasmalar" EntityType="Self.mesajlasmalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slider" EntityType="Self.slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teklif_butonlari" EntityType="Self.teklif_butonlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teklif_miktarlari" EntityType="Self.teklif_miktarlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teklifler" EntityType="Self.teklifler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun_teklif_butonlari" EntityType="Self.urun_teklif_butonlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunler" EntityType="Self.urunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uyeler" EntityType="Self.uyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zamanlar" EntityType="Self.zamanlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_engellenen_uyeler_uyeler" Association="Self.FK_engellenen_uyeler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="engellenen_uyeler" EntitySet="engellenen_uyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_engellenen_uyeler_uyeler1" Association="Self.FK_engellenen_uyeler_uyeler1">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="engellenen_uyeler" EntitySet="engellenen_uyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_galeriler_urunler1" Association="Self.FK_galeriler_urunler1">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="galeriler" EntitySet="galeriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kargolar_urunler" Association="Self.FK_kargolar_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="kargolar" EntitySet="kargolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kargolar_uyeler" Association="Self.FK_kargolar_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="kargolar" EntitySet="kargolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesajlasmalar_uyeler" Association="Self.FK_mesajlasmalar_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="mesajlasmalar" EntitySet="mesajlasmalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_teklif_butonlari" Association="Self.FK_teklif_miktarlari_teklif_butonlari">
+            <End Role="teklif_butonlari" EntitySet="teklif_butonlari" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_urunler" Association="Self.FK_teklif_miktarlari_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_uyeler" Association="Self.FK_teklif_miktarlari_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklifler_urunler" Association="Self.FK_teklifler_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="teklifler" EntitySet="teklifler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklifler_uyeler" Association="Self.FK_teklifler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="teklifler" EntitySet="teklifler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_teklif_butonlari_teklif_butonlari" Association="Self.FK_urun_teklif_butonlari_teklif_butonlari">
+            <End Role="teklif_butonlari" EntitySet="teklif_butonlari" />
+            <End Role="urun_teklif_butonlari" EntitySet="urun_teklif_butonlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_teklif_butonlari_urunler" Association="Self.FK_urun_teklif_butonlari_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="urun_teklif_butonlari" EntitySet="urun_teklif_butonlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunler_kategoriler" Association="Self.FK_urunler_kategoriler">
+            <End Role="kategoriler" EntitySet="kategoriler" />
+            <End Role="urunler" EntitySet="urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunler_uyeler" Association="Self.FK_urunler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="urunler" EntitySet="urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AuctionTrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="site_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hakkimizda" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="iletisim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nasil_calisir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="facebook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="instagram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bakiye_yukle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="miktar" Type="Double" Nullable="false" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="engellenen_uyeler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="engelleyen_u_id" Type="Int32" Nullable="false" />
+          <Property Name="engellenen_u_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_engellenen_uyeler_uyeler" FromRole="engellenen_uyeler" ToRole="uyeler" />
+          <NavigationProperty Name="uyeler1" Relationship="Self.FK_engellenen_uyeler_uyeler1" FromRole="engellenen_uyeler" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="galeriler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_galeriler_urunler1" FromRole="galeriler" ToRole="urunler" />
+        </EntityType>
+        <EntityType Name="itetisim_mesajlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mesaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kargolar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_kargolar_urunler" FromRole="kargolar" ToRole="urunler" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_kargolar_uyeler" FromRole="kargolar" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="kategoriler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="durum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_urunler_kategoriler" FromRole="kategoriler" ToRole="urunler" />
+        </EntityType>
+        <EntityType Name="mesajlasmalar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mesaj_turu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_mesajlasmalar_uyeler" FromRole="mesajlasmalar" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teklif_butonlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="miktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="teklif_miktarlari" Relationship="Self.FK_teklif_miktarlari_teklif_butonlari" FromRole="teklif_butonlari" ToRole="teklif_miktarlari" />
+          <NavigationProperty Name="urun_teklif_butonlari" Relationship="Self.FK_urun_teklif_butonlari_teklif_butonlari" FromRole="teklif_butonlari" ToRole="urun_teklif_butonlari" />
+        </EntityType>
+        <EntityType Name="teklif_miktarlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teklif_butonu_id" Type="Int32" Nullable="false" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="teklif_butonlari" Relationship="Self.FK_teklif_miktarlari_teklif_butonlari" FromRole="teklif_miktarlari" ToRole="teklif_butonlari" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_teklif_miktarlari_urunler" FromRole="teklif_miktarlari" ToRole="urunler" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_teklif_miktarlari_uyeler" FromRole="teklif_miktarlari" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="teklifler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="teklif" Type="Int32" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_teklifler_urunler" FromRole="teklifler" ToRole="urunler" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_teklifler_uyeler" FromRole="teklifler" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="urun_teklif_butonlari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="teklif_butonu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="teklif_butonlari" Relationship="Self.FK_urun_teklif_butonlari_teklif_butonlari" FromRole="urun_teklif_butonlari" ToRole="teklif_butonlari" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_urun_teklif_butonlari_urunler" FromRole="urun_teklif_butonlari" ToRole="urunler" />
+        </EntityType>
+        <EntityType Name="urunler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stok" Type="Int32" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="taban_fiyati" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tavan_fiyati" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="baslangic_tarihi" Type="DateTime" Precision="0" />
+          <Property Name="bitis_tarihi" Type="DateTime" Precision="0" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uye_id" Type="Int32" Nullable="false" />
+          <Property Name="kategori_id" Type="Int32" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="yayin_durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="teklif_durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="onay_durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="galeriler" Relationship="Self.FK_galeriler_urunler1" FromRole="urunler" ToRole="galeriler" />
+          <NavigationProperty Name="kargolar" Relationship="Self.FK_kargolar_urunler" FromRole="urunler" ToRole="kargolar" />
+          <NavigationProperty Name="kategoriler" Relationship="Self.FK_urunler_kategoriler" FromRole="urunler" ToRole="kategoriler" />
+          <NavigationProperty Name="teklif_miktarlari" Relationship="Self.FK_teklif_miktarlari_urunler" FromRole="urunler" ToRole="teklif_miktarlari" />
+          <NavigationProperty Name="teklifler" Relationship="Self.FK_teklifler_urunler" FromRole="urunler" ToRole="teklifler" />
+          <NavigationProperty Name="urun_teklif_butonlari" Relationship="Self.FK_urun_teklif_butonlari_urunler" FromRole="urunler" ToRole="urun_teklif_butonlari" />
+          <NavigationProperty Name="uyeler" Relationship="Self.FK_urunler_uyeler" FromRole="urunler" ToRole="uyeler" />
+        </EntityType>
+        <EntityType Name="uyeler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="yetki" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bakiye" Type="Double" Nullable="false" />
+          <NavigationProperty Name="engellenen_uyeler" Relationship="Self.FK_engellenen_uyeler_uyeler" FromRole="uyeler" ToRole="engellenen_uyeler" />
+          <NavigationProperty Name="engellenen_uyeler1" Relationship="Self.FK_engellenen_uyeler_uyeler1" FromRole="uyeler" ToRole="engellenen_uyeler" />
+          <NavigationProperty Name="kargolar" Relationship="Self.FK_kargolar_uyeler" FromRole="uyeler" ToRole="kargolar" />
+          <NavigationProperty Name="mesajlasmalar" Relationship="Self.FK_mesajlasmalar_uyeler" FromRole="uyeler" ToRole="mesajlasmalar" />
+          <NavigationProperty Name="teklif_miktarlari" Relationship="Self.FK_teklif_miktarlari_uyeler" FromRole="uyeler" ToRole="teklif_miktarlari" />
+          <NavigationProperty Name="teklifler" Relationship="Self.FK_teklifler_uyeler" FromRole="uyeler" ToRole="teklifler" />
+          <NavigationProperty Name="urunler" Relationship="Self.FK_urunler_uyeler" FromRole="uyeler" ToRole="urunler" />
+        </EntityType>
+        <EntityType Name="zamanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zaman_dilimi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zaman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_engellenen_uyeler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="engellenen_uyeler" Type="Self.engellenen_uyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="engellenen_uyeler">
+              <PropertyRef Name="engelleyen_u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_engellenen_uyeler_uyeler1">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="engellenen_uyeler" Type="Self.engellenen_uyeler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="engellenen_uyeler">
+              <PropertyRef Name="engellenen_u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_galeriler_urunler1">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="galeriler" Type="Self.galeriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="galeriler">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kargolar_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="kargolar" Type="Self.kargolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kargolar">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kargolar_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="kargolar" Type="Self.kargolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kargolar">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunler_kategoriler">
+          <End Role="kategoriler" Type="Self.kategoriler" Multiplicity="1" />
+          <End Role="urunler" Type="Self.urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoriler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urunler">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesajlasmalar_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="mesajlasmalar" Type="Self.mesajlasmalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesajlasmalar">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_teklif_butonlari">
+          <End Role="teklif_butonlari" Type="Self.teklif_butonlari" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teklif_butonlari">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="teklif_butonu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_teklif_butonlari_teklif_butonlari">
+          <End Role="teklif_butonlari" Type="Self.teklif_butonlari" Multiplicity="1" />
+          <End Role="urun_teklif_butonlari" Type="Self.urun_teklif_butonlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teklif_butonlari">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urun_teklif_butonlari">
+              <PropertyRef Name="teklif_butonu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklif_miktarlari_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="teklif_miktarlari" Type="Self.teklif_miktarlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklif_miktarlari">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklifler_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="teklifler" Type="Self.teklifler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklifler">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teklifler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="teklifler" Type="Self.teklifler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teklifler">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_teklif_butonlari_urunler">
+          <End Role="urunler" Type="Self.urunler" Multiplicity="1" />
+          <End Role="urun_teklif_butonlari" Type="Self.urun_teklif_butonlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urun_teklif_butonlari">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunler_uyeler">
+          <End Role="uyeler" Type="Self.uyeler" Multiplicity="1" />
+          <End Role="urunler" Type="Self.urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="urunler">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projeEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ayarlar" EntityType="Self.ayarlar" />
+          <EntitySet Name="bakiye_yukle" EntityType="Self.bakiye_yukle" />
+          <EntitySet Name="engellenen_uyeler" EntityType="Self.engellenen_uyeler" />
+          <EntitySet Name="galeriler" EntityType="Self.galeriler" />
+          <EntitySet Name="itetisim_mesajlari" EntityType="Self.itetisim_mesajlari" />
+          <EntitySet Name="kargolar" EntityType="Self.kargolar" />
+          <EntitySet Name="kategoriler" EntityType="Self.kategoriler" />
+          <EntitySet Name="mesajlasmalar" EntityType="Self.mesajlasmalar" />
+          <EntitySet Name="slider" EntityType="Self.slider" />
+          <EntitySet Name="teklif_butonlari" EntityType="Self.teklif_butonlari" />
+          <EntitySet Name="teklif_miktarlari" EntityType="Self.teklif_miktarlari" />
+          <EntitySet Name="teklifler" EntityType="Self.teklifler" />
+          <EntitySet Name="urun_teklif_butonlari" EntityType="Self.urun_teklif_butonlari" />
+          <EntitySet Name="urunler" EntityType="Self.urunler" />
+          <EntitySet Name="uyeler" EntityType="Self.uyeler" />
+          <EntitySet Name="zamanlar" EntityType="Self.zamanlar" />
+          <AssociationSet Name="FK_engellenen_uyeler_uyeler" Association="Self.FK_engellenen_uyeler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="engellenen_uyeler" EntitySet="engellenen_uyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_engellenen_uyeler_uyeler1" Association="Self.FK_engellenen_uyeler_uyeler1">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="engellenen_uyeler" EntitySet="engellenen_uyeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_galeriler_urunler1" Association="Self.FK_galeriler_urunler1">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="galeriler" EntitySet="galeriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kargolar_urunler" Association="Self.FK_kargolar_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="kargolar" EntitySet="kargolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kargolar_uyeler" Association="Self.FK_kargolar_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="kargolar" EntitySet="kargolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunler_kategoriler" Association="Self.FK_urunler_kategoriler">
+            <End Role="kategoriler" EntitySet="kategoriler" />
+            <End Role="urunler" EntitySet="urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesajlasmalar_uyeler" Association="Self.FK_mesajlasmalar_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="mesajlasmalar" EntitySet="mesajlasmalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_teklif_butonlari" Association="Self.FK_teklif_miktarlari_teklif_butonlari">
+            <End Role="teklif_butonlari" EntitySet="teklif_butonlari" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_teklif_butonlari_teklif_butonlari" Association="Self.FK_urun_teklif_butonlari_teklif_butonlari">
+            <End Role="teklif_butonlari" EntitySet="teklif_butonlari" />
+            <End Role="urun_teklif_butonlari" EntitySet="urun_teklif_butonlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_urunler" Association="Self.FK_teklif_miktarlari_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklif_miktarlari_uyeler" Association="Self.FK_teklif_miktarlari_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="teklif_miktarlari" EntitySet="teklif_miktarlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklifler_urunler" Association="Self.FK_teklifler_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="teklifler" EntitySet="teklifler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teklifler_uyeler" Association="Self.FK_teklifler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="teklifler" EntitySet="teklifler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_teklif_butonlari_urunler" Association="Self.FK_urun_teklif_butonlari_urunler">
+            <End Role="urunler" EntitySet="urunler" />
+            <End Role="urun_teklif_butonlari" EntitySet="urun_teklif_butonlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunler_uyeler" Association="Self.FK_urunler_uyeler">
+            <End Role="uyeler" EntitySet="uyeler" />
+            <End Role="urunler" EntitySet="urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AuctionTrModelStoreContainer" CdmEntityContainer="projeEntities1">
+          <EntitySetMapping Name="ayarlar">
+            <EntityTypeMapping TypeName="AuctionTrModel.ayarlar">
+              <MappingFragment StoreEntitySet="ayarlar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="site_adi" ColumnName="site_adi" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="hakkimizda" ColumnName="hakkimizda" />
+                <ScalarProperty Name="iletisim" ColumnName="iletisim" />
+                <ScalarProperty Name="nasil_calisir" ColumnName="nasil_calisir" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bakiye_yukle">
+            <EntityTypeMapping TypeName="AuctionTrModel.bakiye_yukle">
+              <MappingFragment StoreEntitySet="bakiye_yukle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="engellenen_uyeler">
+            <EntityTypeMapping TypeName="AuctionTrModel.engellenen_uyeler">
+              <MappingFragment StoreEntitySet="engellenen_uyeler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="engelleyen_u_id" ColumnName="engelleyen_u_id" />
+                <ScalarProperty Name="engellenen_u_id" ColumnName="engellenen_u_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="galeriler">
+            <EntityTypeMapping TypeName="AuctionTrModel.galeriler">
+              <MappingFragment StoreEntitySet="galeriler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itetisim_mesajlari">
+            <EntityTypeMapping TypeName="AuctionTrModel.itetisim_mesajlari">
+              <MappingFragment StoreEntitySet="itetisim_mesajlari">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adsoy" ColumnName="adsoy" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kargolar">
+            <EntityTypeMapping TypeName="AuctionTrModel.kargolar">
+              <MappingFragment StoreEntitySet="kargolar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategoriler">
+            <EntityTypeMapping TypeName="AuctionTrModel.kategoriler">
+              <MappingFragment StoreEntitySet="kategoriler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mesajlasmalar">
+            <EntityTypeMapping TypeName="AuctionTrModel.mesajlasmalar">
+              <MappingFragment StoreEntitySet="mesajlasmalar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="mesaj_turu" ColumnName="mesaj_turu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slider">
+            <EntityTypeMapping TypeName="AuctionTrModel.slider">
+              <MappingFragment StoreEntitySet="slider">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teklif_butonlari">
+            <EntityTypeMapping TypeName="AuctionTrModel.teklif_butonlari">
+              <MappingFragment StoreEntitySet="teklif_butonlari">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teklif_miktarlari">
+            <EntityTypeMapping TypeName="AuctionTrModel.teklif_miktarlari">
+              <MappingFragment StoreEntitySet="teklif_miktarlari">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="teklif_butonu_id" ColumnName="teklif_butonu_id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teklifler">
+            <EntityTypeMapping TypeName="AuctionTrModel.teklifler">
+              <MappingFragment StoreEntitySet="teklifler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="teklif" ColumnName="teklif" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urun_teklif_butonlari">
+            <EntityTypeMapping TypeName="AuctionTrModel.urun_teklif_butonlari">
+              <MappingFragment StoreEntitySet="urun_teklif_butonlari">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="teklif_butonu_id" ColumnName="teklif_butonu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunler">
+            <EntityTypeMapping TypeName="AuctionTrModel.urunler">
+              <MappingFragment StoreEntitySet="urunler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="stok" ColumnName="stok" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="taban_fiyati" ColumnName="taban_fiyati" />
+                <ScalarProperty Name="tavan_fiyati" ColumnName="tavan_fiyati" />
+                <ScalarProperty Name="baslangic_tarihi" ColumnName="baslangic_tarihi" />
+                <ScalarProperty Name="bitis_tarihi" ColumnName="bitis_tarihi" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="yayin_durumu" ColumnName="yayin_durumu" />
+                <ScalarProperty Name="teklif_durumu" ColumnName="teklif_durumu" />
+                <ScalarProperty Name="onay_durumu" ColumnName="onay_durumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uyeler">
+            <EntityTypeMapping TypeName="AuctionTrModel.uyeler">
+              <MappingFragment StoreEntitySet="uyeler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adsoy" ColumnName="adsoy" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="yetki" ColumnName="yetki" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="bakiye" ColumnName="bakiye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zamanlar">
+            <EntityTypeMapping TypeName="AuctionTrModel.zamanlar">
+              <MappingFragment StoreEntitySet="zamanlar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="zaman_dilimi" ColumnName="zaman_dilimi" />
+                <ScalarProperty Name="zaman" ColumnName="zaman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+﻿@model proje.Areas.admin.Models.uyeler
+
+@{
+    ViewBag.Title = "Profil_Resmi_Degis";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("Profil", "Home")">Profil</a>
+    <span class="con_point">> </span><span>Profil Resmini Değiştir</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Profil Resmi Değiştir</h3></div>
+
+            @if (ViewBag.ProfilResimYuklemeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ProfilResimYuklemeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.ResimTuruHata != null)
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ResimTuruHata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="profil_resmi text-center"><img width="187" height="200" src="~/Assets/uploads/profile_img/@Model.resim" alt="profil_img" /></div>
+            <div class="uye_ekleme_formu">
+                <form action="@Url.Action("Profil_Resmi_Degis", "Home")" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="imageFile" class="btn" style="width:100%;background-color:#F8F8F8;border:1px solid #D9D9D9;padding:7px">Resmi Seçmek İçin Tıklayın</label>
+                        <input name="imageFile" id="imageFile" type="file" required style="display:none" />
+                        <div><span>Seçilen Resim: </span><span id="resim_name" style="color:#1EA075"></span><span id="resim_hata" style="background-color:#FAFFBD;color:red;padding:5px;display:none"></span></div>
+                    </div>
+                    <button id="btn_kaydet" type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/Assets/admin/js/jquery-3.2.1.min.js")"></script>
+<script>
+    $(document).ready(function () {
+        var fileName
+        $('input[type="file"]').change(function (e) {
+            fileName = e.target.files[0].name;
+            $('#resim_name').text(fileName);
+            $('#resim_hata').hide();
+        });
+        $('#btn_kaydet').click(function (e) {
+            if (fileName == null) {
+                $('#resim_hata').show();
+                $('#resim_hata').text("Lütfen bir ürün resmi seçiniz!");
+            }
+        });
+    });
+
+</script>

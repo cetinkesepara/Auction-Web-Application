@@ -1,0 +1,32 @@
+﻿@model proje.Areas.admin.Models.bakiye_yukle
+
+@{
+    ViewBag.Title = "Yuklemeler_islem";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("Yuklemeler", "Uyeler")">Alınan Kargolar</a>
+    <span class="con_point">> </span><span>İşlem</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div style="margin:20px 0px;">@ViewBag.uyeadi Kullanıcı hesabına @Model.tarih tarihindeki ödeme için @Model.miktar TL yüklemek üzere işlem seçiniz: </div>
+            <div>
+                <form method="post" action="@Url.Action("Yuklemeler_islem", "Uyeler",new { b_id = Model.id })">
+                    <div class="form-group">
+                        <select class="form-control" name="islem">
+                            <option selected>İşlem Seçiniz</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Reddedildi">Reddedildi</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-success" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

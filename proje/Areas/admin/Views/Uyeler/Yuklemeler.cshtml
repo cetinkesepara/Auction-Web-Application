@@ -1,0 +1,110 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.bakiye_yukle>
+@{
+    ViewBag.Title = "Yuklemeler";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Yüklemeler</span>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Yüklemeler</h3></div>
+
+            @if (ViewBag.by_islem != null)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.by_islem
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.by_sil != null)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.by_sil
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="tableback">
+                <table class="data_table_pagination table table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Uye ID</th>
+                            <th>Miktar</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                            <th>İşlem</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Uye ID</th>
+                            <th>Miktar</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                            <th>İşlem</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                            <tr> 
+                                <td><a href="@Url.Action("Details","Uyeler",new { id = item.id } )">@item.uye_id</a></td>
+                                <td>@item.miktar TL</td>
+                                <td>@item.tarih</td>
+                                <td>
+
+                                    @if (item.durum == "Onay Bekleniyor")
+                                    {
+                                        <div style="background-color:#B4B4B4;color:#fff;padding:5px" title="Bankadan onay bekleniyor">@item.durum</div>
+                                    }
+                                    @if (item.durum == "Onaylandı")
+                                    {
+                                        <div style="background-color:#009688;color:#fff;padding:5px" title="Ödeme onaylandı">@item.durum</div>
+                                    }
+                                    @if (item.durum == "Reddedildi")
+                                    {
+                                        <div style="background-color:#D9534F;color:#fff;padding:5px" title="İşlem yapılamadı">@item.durum</div>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.durum == "Onay Bekleniyor")
+                                    {
+                                        <a href="@Url.Action("Yuklemeler_islem","Uyeler", new { b_id = item.id })" style="width:80%" class="btn btn-success btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i> İşlem </a>
+                                    }
+                                    else
+                                    {
+                                        <a style="width:80%;color:white" class="btn btn-success btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i> İşlem Yapılamaz</a>
+                                    }
+
+                                </td>
+                                <td><a href="@Url.Action("Yuklemeler_sil","Uyeler", new { id = item.id } )" onclick="return confirm('Silinsin mi?')" style="width:80%" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Sil</a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

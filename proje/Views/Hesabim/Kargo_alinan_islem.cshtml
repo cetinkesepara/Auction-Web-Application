@@ -1,0 +1,93 @@
+﻿@model proje.Areas.admin.Models.kargolar 
+
+@{
+    ViewBag.Title = "Kargo_alinan_islem";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-truck" aria-hidden="true"></i> <a href="@Url.Action("Alinan_kargolar","Hesabim")">Alınan Kargolar</a>
+    <span class="con_point">> </span><span>Alınan Kargo İşlemleri</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Alınan Kargo İşlemleri</h3></div>
+            <div class="kargo_islemler">
+                <form method="post" action="@Url.Action("Kargo_alinan_islem", "Hesabim", new { kargo_id = Model.id })">
+                    <select name="kargo_islem">
+                        <option value="">İŞLEM SEÇİNİZ</option>
+
+                        @if (Model.durum == "Kargo Yola Çıktı")
+                        {
+                            <option value="1">Kargo teslim alındı olarak işaretle.</option>
+                        }
+
+                    </select>
+                    <input type="submit" class="btn btn-info btn-medium" value="Onayla" style="width:100%;margin-top:10px" />
+                </form>
+            </div>
+            <div class="kargo_urun_kisi">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="kargo_urun_resmi text-center"><img width="100" height="130" src="~/Assets/uploads/products_img/@Model.urunler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    @if (Model.urunler.uyeler.yetki == "Üye")
+                                    {
+                                        <th>Satıcı Üye</th>
+                                        <td>@Model.urunler.uyeler.adsoy</td>
+                                    }
+                                    else
+                                    {
+                                        <th>Firma Yetkilisi</th>
+                                        <td>@Model.urunler.uyeler.adsoy</td>
+                                    }
+                                    
+                                </tr>
+                                <tr>
+                                    <th>Telefon Numarası</th>
+                                    <td>@Model.urunler.uyeler.telefon</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>@Model.urunler.uyeler.email</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@Model.urunler.adi</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="kargo_uye_resmi text-center"><img width="100" height="130" src="~/Assets/uploads/profile_img/@Model.uyeler.resim" alt="profil_img" /></div>
+                        <div>
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Alıcı Üye</th>
+                                    <td>@Model.uyeler.adsoy</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon Numarası</th>
+                                    <td>@Model.uyeler.telefon</td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail Adresi</th>
+                                    <td>@Model.uyeler.email</td>
+                                </tr>
+                                <tr>
+                                    <th>Adres Bilgisi</th>
+                                    <td>@Model.uyeler.adres</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

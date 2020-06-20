@@ -1,0 +1,63 @@
+﻿@model proje.Areas.admin.Models.uyeler
+
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="uye_detay">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="profil_img"><img width="187" height="200" src="~/Assets/uploads/profile_img/@Model.resim" alt="profil_img" /></div>
+                        <div class="detay_yetki">
+                            @if (Model.yetki.Trim().Equals("Admin"))
+                            {
+                                <div class="yetki_admin">@Model.yetki</div>
+                            }
+                            @if (Model.yetki.Trim().Equals("Yönetici"))
+                            {
+                                <div class="yetki_yonetici">@Model.yetki</div>
+                            }
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Adı ve Soyadı</th>
+                                    <td>@Model.adsoy</td>
+                                </tr>
+                                <tr>
+                                    <th>Email Adresi</th>
+                                    <td>@Model.email</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon</th>
+                                    <td>@Model.telefon</td>
+                                </tr>
+                                <tr>
+                                    <th>Şehir</th>
+                                    <td>@Model.sehir</td>
+                                </tr>
+                                <tr>
+                                    <th>Adres</th>
+                                    <td>@Model.adres</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

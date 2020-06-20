@@ -1,0 +1,19 @@
+﻿@model  proje.Areas.admin.Models.ayarlar
+
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+<section id="iletisim">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>İLETİŞİM SAYFASI</h3>
+                <div>
+                    @Html.Raw(Model.iletisim)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Urun_ekle_sonuc";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+@if (ViewBag.UrunEklemeSonucu != null)
+            {
+    <div class="alert alert-success">
+        <div>
+            @ViewBag.UrunEklemeSonucu <br/>
+            <a href="@Url.Action("Onay_bekleyenler","Hesabim")">Onay bekleyenler sayfasına gitmek için tıklayınız.</a>
+        </div>
+        <br>
+    </div>
+}

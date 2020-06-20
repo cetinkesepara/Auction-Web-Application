@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Bakiye_yukle";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+
+<div>
+    <form method="post" action="@Url.Action("Bakiye_yukle","Hesabim")">
+        <div class="form-group">
+            <label for="tl">Yükleyeceğiniz TL Miktarı</label>
+            <input type="text" class="form-control" name="tl" id="tl" placeholder="00,00">
+        </div>
+        <div class="form-group">
+            <label for="kart-isim">Kart Üzerindeki İsminiz</label>
+            <input type="text" class="form-control" name="kart-isim" id="kart-isim" placeholder="Kart üzerinde yazan isminiz">
+        </div>
+        <div class="form-group">
+            <label for="kart-numara">Kart Numarası</label>
+            <input type="text" class="form-control" name="kart-numara" id="kart-numara" placeholder="Kart numarası">
+        </div>
+        <div class="form row">
+            <div class="form-group col-md-6">
+                <label for="son_kullanma_ay">Son Kullanma Tarihi</label>
+                <select class="form-control" name="son_kullanma_ay" id="son_kullanma_ay">
+                    <option selected>Ay</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="son_kullanma_yil">Son Kullanma Tarihi</label>
+                <select class="form-control" name="son_kullanma_yil" id="son_kullanma_yil">
+                    <option selected>Yıl</option>
+                    <option value="13">2013</option>
+                    <option value="14">2014</option>
+                    <option value="15">2015</option>
+                    <option value="16">2016</option>
+                    <option value="17">2017</option>
+                    <option value="18">2018</option>
+                    <option value="19">2019</option>
+                    <option value="20">2020</option>
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="19">2024</option>
+                    <option value="20">2025</option>
+                    <option value="21">2026</option>
+                    <option value="22">2027</option>
+                    <option value="23">2028</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cvv">Kart CVV</label>
+            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Kart arkasındaki üç haneli güvenlik kodu">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" style="width:100%" class="btn btn-success">ÖDEMEYİ TAMAMLA</button>
+        </div>
+
+    </form>
+</div>
+
+        
+
+

@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Urun_ekle";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <a href="@Url.Action("Urun_ekle","Hesabim")">Ürün Ekle</a>
+</div>
+
+<div class="head_page"><h4>Ürün Ekleme Formu</h4></div>
+
+@if (ViewBag.ResimTuruHata != null)
+            {
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="ace-icon fa fa-times"></i>
+        </button><br>
+        @ViewBag.ResimTuruHata
+        <br>
+    </div>
+}
+
+<div class="uye_ekleme_formu">
+    <form action="@Url.Action("Urun_ekle","Hesabim")" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Urun Adı</label>
+            <input name="adi" minlength="3" maxlength="30" required class="form-control" type="text" placeholder="Ürün Adı">
+        </div>
+        <div class="form-group">
+            <label>Taban Fiyatı</label>
+            <input name="taban_fiyati" minlength="1" required class="form-control" type="text" placeholder="Taban Fiyatı">
+        </div>
+        <div class="form-group">
+            <label>Tavan Fiyatı</label>
+            <input name="tavan_fiyati" minlength="1" required class="form-control" type="text" placeholder="Tavan Fiyatı">
+        </div>
+        <div class="form-group">
+            <label>Kategori</label>
+            <select name="kategori" required class="form-control">
+                <option value="">Kategori Seçiniz</option>
+                @foreach (var item in ViewBag.Kategoriler)
+                {
+                    <option value="@item.id">@item.adi</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Meta Description</label>
+            <input name="description" minlength="1" required class="form-control" type="text" placeholder="Meta Description">
+        </div>
+        <div class="form-group">
+            <label>Meta Keywords</label>
+            <input name="keywords" minlength="1" required class="form-control" type="text" placeholder="Meta Keywords">
+        </div>
+        <div class="form-group">
+            <h6 class="text-center">Ürün Kapak Resmi</h6>
+            <label for="imageFile" class="btn" style="width:100%;background-color:#F8F8F8;border:1px solid #D9D9D9;padding:7px">Resmi Seçmek İçin Tıklayın</label>
+            <input name="imageFile" id="imageFile" type="file" required style="display:none" />
+            <div><span>Seçilen Resim: </span><span id="resim_name" style="color:#1EA075"></span><span id="resim_hata" style="background-color:#FAFFBD;color:red;padding:5px;display:none"></span></div>
+        </div>
+        <div class="form-group">
+            <h6 class="text-center">Ürün Özellik ve Tanıtımı</h6>
+            <textarea name="aciklama" required style="width:100%" id="urun_editor"></textarea>
+        </div>
+
+        <button id="btn_kaydet" type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>
+
+
+

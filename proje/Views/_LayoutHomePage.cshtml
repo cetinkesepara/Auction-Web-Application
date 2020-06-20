@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+   
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+    <meta name="description" content="@ViewBag.Keywords">
+    <meta name="keywords" content="@ViewBag.Description">
+    <title>@ViewBag.Title</title>
+
+    <!-- Css Bağlantıları -->
+    <link href="~/Assets/home/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="~/Assets/home/css/jquery.bxslider.min.css" rel="stylesheet">
+    <link href="~/Assets/home/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Assets/home/css/fotorama.css" rel="stylesheet" />
+    <link href="~/Assets/home/css/main.css" rel="stylesheet">
+    <link href="~/Assets/home/css/login.css" rel="stylesheet" />
+    <link href="~/Assets/home/css/profile.css" rel="stylesheet">
+    <link href="~/Assets/home/css/product.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <section id="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-light navbar-toggleable-md fixed-top">
+
+                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <a class="navbar-brand" href="@Url.Action("Index","Anasayfa")">
+                                <img src="~/Assets/home/img/projelogo.png" alt="logo">
+                            </a>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","Anasayfa")">AÇIK ARTTIRMALAR</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("BizeYazin","Anasayfa")">BİZE YAZIN</a>
+                                    </li>
+                                    @if (Session["uye_email"] == null)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index","Girisyap")">GİRİŞ YAP/ÜYE OL</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index","Hesabim")">HESABIM</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Cikisyap","Girisyap")">ÇIKIŞ</a>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    @RenderBody()
+
+    <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <h3>AÇIK ARTTIRMALAR</h3>
+                        <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> Canlı Açık Arttırmalar</a><br>
+                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Yaklaşan Açık Arttırmalar</a><br>
+                        <a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i> Biten Açık Arttırmalar</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h3>DESTEK</h3>
+                        <a href="@Url.Action("NasilCalisir","Anasayfa")"><i class="fa fa-question-circle" aria-hidden="true"></i> Nasıl Çalışır?</a><br>
+                        <a href="@Url.Action("Iletisim","Anasayfa")"><i class="fa fa-envelope" aria-hidden="true"></i> İletişim</a><br>
+                        <a href="@Url.Action("Hakkinda","Anasayfa")"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> Hakkında</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h3>SOSYAL MEDYA</h3>
+                        <a href="@Url.Action("Sosyal","Anasayfa", new { s = 1})"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a><br>
+                        <a href="@Url.Action("Sosyal","Anasayfa", new { s = 2})"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a><br>
+                        <a href="@Url.Action("Sosyal","Anasayfa", new { s = 3})"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h3>ÜRÜN GEÇMİŞİ</h3>
+                        <a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i> Satılan Ürünler</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a class="copy" href="#">Copyright 2017-2018 | </a>
+                        <a class="uSoz" href="#">Üyelik Sözleşmesi</a>
+                    </div>
+                </div>
+            </div>
+        </section>  
+
+
+
+    <!-- Scriptler -->
+    <script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/home/js/bootstrap.min.js"></script>
+    <script src="~/Assets/home/js/fotorama.js"></script>
+    <script src="@Url.Content("~/Assets/DataTables/datatables.min.js")"></script>
+    <script src="~/Assets/home/js/jquery.bxslider.min.js"></script>
+    <script src="@Url.Content("~/Assets/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Assets/ckeditor/config.js")"></script>
+    <script src="~/Assets/home/js/jquery.countdown.min.js"></script>
+    <script src="~/Assets/home/js/main.js"></script>
+    <script>
+        /*Tablolar için pagination ayarları*/
+        $(document).ready(function () {
+            $('.data_table_pagination').DataTable({
+                "language": {
+                    "info": "_TOTAL_ Sonuçtan _START_ - _END_ arası gösteriliyor",
+                    "infoEmpty": "0 Sonuçtan 0 - 0 arası gösteriliyor",
+                    "lengthMenu": "_MENU_ Sonucu göster",
+                    "search": "Arama:",
+                    "emptyTable": "Tabloda veri yok",
+                    "paginate": {
+                        "next": "Sonraki",
+                        "previous": "Önceki"
+                    }
+                }
+            });
+        });
+
+        function getCountDown() {
+
+           
+                $('[data-countdown]').each(function () {
+                    var $this = $(this), finalDate = $(this).data('countdown');
+                    var finalDateArrayOne = finalDate.split(".");
+                    var finalDateArrayTwo = finalDateArrayOne[2].split(" ");
+                    var finalDateLast = finalDateArrayTwo[0] + "/" + finalDateArrayOne[1] + "/" + finalDateArrayOne[0] + " " + finalDateArrayTwo[1];
+
+                    $this.countdown(finalDateLast, function (event) {
+                        $this.html(event.strftime('%D Gün %H:%M:%S'));
+                    }).on('finish.countdown', function (event) {
+                        $(this).parent()
+                            .html('<h3>Süre</h3><div class="time">-</div>');
+                        location.reload();
+                    });
+
+                });
+          
+        }
+        
+        
+    </script>
+</body>
+</html>

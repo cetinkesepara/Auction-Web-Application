@@ -1,0 +1,103 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.teklif_butonlari>
+
+@{
+    ViewBag.Title = "TeklifButonlari";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index","Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Teklif Butonları</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Teklif Butonları</h3></div>
+
+            @if (ViewBag.ButonEkleSonuc != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ButonEkleSonuc
+                    </div>
+                    <br>
+                </div>
+            }
+            @if (ViewBag.ButonEkleHata != null)
+            {
+                <div class="alert alert-danger">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ButonEkleHata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.ButonSil != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ButonSil
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.ButonSilHata != null)
+            {
+                <div class="alert alert-success">
+                    <button style="float:right" type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.ButonSilHata
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div class="add_link">
+                <form method="post" action="@Url.Action("TeklifButonuEkle","Teklifler")">
+                    <input class="form-control" style="width:100%" type="number" name="miktar" placeholder="Buton Miktarı"/>
+                    <input class="btn btn-success" style="width:100%" type="submit" value="EKLE"/>
+                </form>
+            </div>
+            <div class="tableback">
+                <table class="data_table_pagination table table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Miktar</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Miktar</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.miktar TL</td>
+                                <td><a href="@Url.Action("TeklifButonuSil","Teklifler", new { id = item.id})" onclick="return confirm('Silinsin mi?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> SİL</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

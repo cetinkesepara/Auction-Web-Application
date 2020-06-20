@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+<section id="profile">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-3">
+                <div class="toggleAside">
+                    <a><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="profileAside">
+                    <div class="list-group ">
+
+                        <a href="@Url.Action("Index","Hesabim")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-universal-access" aria-hidden="true"></i>
+                            ÖZET
+                        </a>
+
+
+                        <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#urunlerim" aria-expanded="false" aria-controls="urunlerim">
+                            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                            ÜRÜNLERİM
+                        </a>
+                        <div class="collapse" id="urunlerim">
+                            <a href="@Url.Action("Urun_listeleme","Hesabim")" class="list-group-item list-group-item-action">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                ÜRÜNLERİ LİSTELE
+                            </a>
+                            <a href="@Url.Action("Urun_ekle","Hesabim")" class="list-group-item list-group-item-action">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                YENİ ÜRÜN EKLE
+                            </a>
+                            <a href="@Url.Action("Onay_bekleyenler","Hesabim")" class="list-group-item list-group-item-action">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                ONAY BEKLEYENLER
+                            </a>
+                        </div>
+
+
+                        <a href="@Url.Action("Tekliflerim","Hesabim")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-gavel" aria-hidden="true"></i>
+                            TEKLİFLERİM
+                        </a>
+
+                        <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#kargolarim" aria-expanded="false" aria-controls="kargolarim">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
+                            KARGOLARIM
+                        </a>
+                        <div class="collapse" id="kargolarim">
+                            <a href="@Url.Action("Alinan_kargolar","Hesabim")" class="list-group-item list-group-item-action">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                ALINAN KARGOLAR
+                            </a>
+                            <a href="@Url.Action("Gonderilen_kargolar","Hesabim")" class="list-group-item list-group-item-action">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                GÖNDERİLEN KARGOLAR
+                            </a>
+                        </div>
+
+                        <a href="@Url.Action("Alinan_mesajlar","Hesabim")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            MESAJLARIM
+                        </a>
+
+
+                        <a href="@Url.Action("Yuklemelerim","Hesabim")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
+                            YÜKLEMELERİM
+                        </a>
+
+                        <a href="@Url.Action("Hesap_ayarlari","Hesabim")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                            HESAP AYARLARI
+                        </a>
+
+                        <a class="larrowjs list-group-item list-group-item-action">
+                            <i class="larrow fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div style="margin-top:100px">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

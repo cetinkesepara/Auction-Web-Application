@@ -1,0 +1,101 @@
+﻿@model  proje.Areas.admin.Models.urunler
+
+@{
+    ViewBag.Title = "urun_detay";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <a href="@Url.Action("Urun_listeleme","Hesabim")">Ürün Listeleme</a>
+    <span class="con_point">> </span><span>Ürün Detay</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Ürün Detay Sayfası</h3></div>
+
+            @if (ViewBag.YayinDurumu != null)
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.YayinDurumu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            @if (ViewBag.UrunDuzenlemeSonucu != null)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" style="background-color:#F2DEDE">
+                        <i class="ace-icon fa fa-times"></i>
+                    </button><br>
+                    <div>
+                        @ViewBag.UrunDuzenlemeSonucu
+                    </div>
+                    <br>
+                </div>
+            }
+
+            <div style="margin-top:20px"><a href="@Url.Action("Urun_duzenle","Hesabim",new { urun_id = Model.id } )" class="btn btn-info" style="width:100%">BU ÜRÜNÜ DÜZENLE</a></div>
+            <div class="urun_detay">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="details_profil_img"><img width="200" height="213" src="~/Assets/uploads/products_img/@Model.resim" alt="profil_img" /></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@Model.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Kategorisi</th>
+                                    <td>@Model.kategoriler.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Stok Durumu</th>
+                                    <td>@Model.stok</td>
+                                </tr>
+                                <tr>
+                                    <th>Taban Fiyatı</th>
+                                    <td>@Model.taban_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Tavan Fiyatı</th>
+                                    <td>@Model.tavan_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Durum</th>
+                                    <td>@Model.durum</td>
+                                </tr>
+                                <tr>
+                                    <th>Paylaşım Tarihi</th>
+                                    <td>@Model.tarih</td>
+                                </tr>
+                                <tr>
+                                    <th>Meta Descrition</th>
+                                    <td>@Model.description</td>
+                                </tr>
+                                <tr>
+                                    <th>Meta Keywords</th>
+                                    <td>@Model.keywords</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h4 class="text-center">Ürün Özellik ve Tanıtımı</h4>
+                        @Html.Raw(Model.aciklama)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

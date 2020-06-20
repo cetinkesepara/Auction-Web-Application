@@ -1,0 +1,16 @@
+﻿@model  proje.Areas.admin.Models.mesajlasmalar
+
+@{
+    ViewBag.Title = "Mesaj_alinan_oku";
+    Layout = "~/Views/_LayoutHesabimPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-envelope" aria-hidden="true"></i> <a href="@Url.Action("Alinan_mesajlar","Hesabim")">Alınan Mesajlar</a>
+    <span class="con_point">> </span><span>Oku</span>
+</div>
+
+<div>
+    @Html.Raw(Model.mesaj)
+</div>
+

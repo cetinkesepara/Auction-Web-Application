@@ -1,0 +1,528 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.kategoriler>
+
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+@if(ViewBag.catIDList != null)
+{
+    int cat_count = 0;
+    foreach(var cat_ in ViewBag.catIDList)
+    {
+        <input type="hidden" value="@cat_" id="cat@(cat_count)" />
+        cat_count++;
+    }
+    <input type="hidden" value="@cat_count" id="catCount" />
+}
+
+@if (ViewBag.autTimeList != null)
+{
+    int aut_count = 0;
+    foreach (var aut_ in ViewBag.autTimeList)
+    {
+        <input type="hidden" value="@aut_" id="aut@(aut_count)" />
+        aut_count++;
+    }
+    <input type="hidden" value="@aut_count" id="autCount" />
+}
+
+@if (ViewBag.minMaxList != null)
+{
+    <input type="hidden" value="@ViewBag.minMaxList[0]" id="min" />
+    <input type="hidden" value="@ViewBag.minMaxList[1]" id="max" />
+}
+
+<section id="slider">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="slider">
+                    <div><a href="#"><img src="#" alt="asd"></a></div>
+                    <div><a href="#"><img src="#" alt="asd"></a></div>
+                    <div><a href="#"><img src="#" alt="asd"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="urunler">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div id="filtreMobileTitle">FİLTRELEME</div>
+                <div id="filtreMobileDiv" class="filtre">
+                    <h3>ÜRÜN FİLTRELEME</h3>
+                    <form method="post" action="@Url.Action("Filtreleme","Anasayfa")">
+                        <fieldset class="form-group">
+                            <h3>KATEGORİLER</h3>
+                            @foreach (var item in Model)
+                            {
+                                if (ViewBag.catIDList != null)
+                                {                                 
+                                    int count = 0;
+                                    foreach (var cat in ViewBag.catIDList)
+                                    {
+                                        if (item.id == cat)
+                                        {
+                                            count++;
+                                        }
+                                    }
+                                    if (count == 1)
+                                    {
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input name="kat[]" type="checkbox" checked class="form-check-input" value="@item.id">
+                                                @item.adi
+                                            </label>
+                                        </div>
+                                        
+                                    }
+                                    else
+                                    {
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input name="kat[]" type="checkbox" class="form-check-input" value="@item.id">
+                                                @item.adi
+                                            </label>
+                                        </div>
+                                        
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="kat[]" type="checkbox" class="form-check-input" value="@item.id">
+                                            @item.adi
+                                        </label>
+                                    </div>
+                                }
+                            }
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <h3>AÇIK ARTTIRMALAR</h3>
+                            @if (ViewBag.autTimeList != null)
+                            {
+                                int a0 = 0, a1 = 0, a2 = 0;
+                                foreach (var aut in ViewBag.autTimeList)
+                                {
+                                    if (aut == 1)
+                                    {
+                                        a0 = 1;
+                                    }
+
+                                    if (aut == 2)
+                                    {
+                                        a1 = 1;
+                                    }
+
+                                    if (aut == 3)
+                                    {
+                                        a2 = 1;
+                                    }
+
+                                }
+
+                                if (a0 == 1)
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" checked class="form-check-input" value="1">
+                                            CANLI
+                                        </label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" class="form-check-input" value="1">
+                                            CANLI
+                                        </label>
+                                    </div>
+                                }
+
+                                if (a1 == 1)
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" checked class="form-check-input" value="2">
+                                            YAKINDA
+                                        </label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" class="form-check-input" value="2">
+                                            YAKINDA
+                                        </label>
+                                    </div>
+                                }
+
+                                if (a2 == 1)
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" checked class="form-check-input" value="3">
+                                            BİTMİŞ
+                                        </label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="aucTime[]" type="checkbox" class="form-check-input" value="3">
+                                            BİTMİŞ
+                                        </label>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input name="aucTime[]" type="checkbox" class="form-check-input" value="1">
+                                        CANLI
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input name="aucTime[]" type="checkbox" class="form-check-input" value="2">
+                                        YAKINDA
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input name="aucTime[]" type="checkbox" class="form-check-input" value="3">
+                                        BİTMİŞ
+                                    </label>
+                                </div>
+                            }
+                            
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <h3>FİYAT</h3>
+                            @if (ViewBag.minMaxList != null)
+                            {
+                                if (ViewBag.minMaxList[0] != 0)
+                                {
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Min</label>
+                                        <input value="@ViewBag.minMaxList[0]" name="minFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Minimum Fiyat">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Min</label>
+                                        <input name="minFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Minimum Fiyat">
+                                    </div>
+                                }
+
+                                if (ViewBag.minMaxList[1] != 0)
+                                {
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Max</label>
+                                        <input value="@ViewBag.minMaxList[1]" name="maxFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Maksimum Fiyat">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Max</label>
+                                        <input name="maxFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Maksimum Fiyat">
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Min</label>
+                                    <input name="minFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Minimum Fiyat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Max</label>
+                                    <input name="maxFiyat" type="text" class="form-control" id="formGroupExampleInput" placeholder="Maksimum Fiyat">
+                                </div>
+                            }
+                            
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">FİLTRELE</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row" id="mainproducts">
+                    
+ 
+                    <!--
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="~/Assets/home/img/deneme2.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme2.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme4.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme2.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme2.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme4.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="card">
+                            <h3>Lorem ipsum dolor sit amet</h3>
+                            <img class="img-fluid" src="img/deneme4.jpg" alt="img" width="237" height="175">
+                            <div class="b1">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>Açılışa kalan süre</h3>
+                                        <div class="time">3:32:34</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" href="#">
+                                            <i class="fa fa-2x fa-gavel" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="b2">
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <h3>En yüksek teklif</h3>
+                                        <div class="count">161TL</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="min"><span class="min">Min </span><span class="min_">140TL</span></div>
+                                        <div class="max"><span class="max">Max </span><span class="max_">200TL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" onclick="getProducts()" class="btn btn-success" style="width:100%;background-color:#009688;margin-top:20px">DAHA FAZLA YÜKLE</button>
+                        <input id="p_start" type="hidden" value="0" />
+                        <input id="p_finish" type="hidden" value="6" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/home/js/products-auction.js"></script>

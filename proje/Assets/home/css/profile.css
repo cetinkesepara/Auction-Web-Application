@@ -1,0 +1,445 @@
+/*Connection Way*/
+.connection_way {
+    padding: 9px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin:0px;
+    margin-bottom:15px;
+}
+
+.connection_way a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #1EA075;
+}
+
+.connection_way span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #787878;
+}
+
+.connection_way .con_point {
+    color: #bbbbbb;
+}
+
+
+/* Profile*/
+#profile {
+    min-height:65vh;
+}
+
+#profile .profileAside {
+    position: fixed;
+    margin-top: 58px;
+    margin-left:-15px;
+    z-index: 1;
+}
+
+.profileAside {
+    display: block;
+}
+
+.profileAside a {
+    width: 250px;
+}
+
+.profileAside .fa{
+    margin-right: 10px;
+    color: #009688;
+}
+
+.profileAside .larrow {
+    margin: 0 auto;
+}
+
+.toggleAside {
+    position: fixed;
+    margin-top: 68px;
+    margin-left: -15px;
+    z-index: 1;
+}
+
+.toggleAside a {
+    background-color: #009688;
+    padding: 10px 0px;
+}
+
+.toggleAside a:hover {
+    opacity: 0.9;
+}
+
+.toggleAside .fa {
+    margin:0px 15px;
+    color: #fff;
+    font-size:20px;
+}
+
+.mobile-list {
+    display:none;
+}
+
+.mobile-list .item {
+    margin-top:10px;
+    padding: 0px 10px 0px 10px;
+    max-width:100%;
+}
+
+.mobile-list .item b {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #585858;
+}
+
+.mobile-list .item .list-group-item i {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #585858;
+}
+
+.mobile-list .pag {
+    padding: 10px 13px 0px 13px;
+}
+
+.mobile-list ul {
+    list-style:none;
+    padding:0px;
+}
+
+.mobile-list li {
+    display:inline;
+}
+
+.mobile-list li button {
+    background-color: #009688;
+    padding: 2px 7px 2px 7px;
+    color:#fff;
+    border:none;
+}
+
+.mobile-list li button:hover {
+    opacity:0.8;
+}
+
+
+/*Pagination Tables*/
+.table-list {
+    margin-top:15px;
+    padding: 20px 0 20px 0;
+    max-width:100%;
+}
+
+.table-list table {
+    background-color: #fff;
+    width:100%;
+}
+
+.table-list table .profile_img {
+    border:3px double #5BC0DE;
+    max-width:35px;
+}
+
+.table-list table th {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #585858;
+}
+
+.table-list table td {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #585858;
+}
+
+.table-list table .detail .fa {
+    color: #228BAA;
+    font-size: 18px;
+    transition-duration:0.5s;
+}
+
+.table-list table .detail:hover .fa {
+    font-size: 24px;
+}
+
+/*mesaj tablolarý*/
+.table-list .table-mesaj .fa {
+    font-size: 18px;
+    transition-duration:0.5s;
+}
+
+.table-list .table-mesaj .fa-envelope {
+    color:#0275D8;
+}
+
+.table-list .table-mesaj .fa-trash{
+    color:#D9534F;
+}
+
+.table-list .table-mesaj .fa-envelope:hover,.table-list .table-mesaj .fa-trash:hover {
+    font-size: 24px;
+}
+
+/*Kargo*/
+
+.kargo_islemler {
+    margin-top:15px;
+    padding: 20px 0 20px 0;
+    max-width:100%;
+    margin-bottom:15px;
+}
+
+.kargo_islemler form {
+    margin:0px 15px 0px 15px;
+}
+
+.kargo_islemler select {
+    
+    padding:15px 10px 15px 10px;
+    width:100%;
+}
+
+.kargo_islemler select option {
+    padding:10px;
+}
+
+.kargo_urun_kisi table th {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.kargo_urun_resmi img,.kargo_uye_resmi img {
+    border: 3px double #009688;
+}
+
+/*urun detay sayfasý */
+.urun_detay {
+    margin-top: 25px;
+}
+
+.urun_detay .details_profil_img img{
+    border:3px double #5BC0DE;
+    padding: 5px;
+}
+
+.urun_detay .profil_img img, .urun_profile_img img{
+    border:3px double #1EA075;
+    padding: 5px;
+}
+
+.urun_detay .details th{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #667E99;
+    text-align: right;
+    width: 150px;
+}
+
+.urun_detay .details td{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #393939;
+}
+
+/*yayinla_form*/
+.yayinla_form .form-check {
+    background-color:#E9EBEE;
+    color:#000;
+    margin-left:0px;
+    padding:3px 5px 3px 5px;
+    border-radius:3px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-user-select: none;
+    
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    user-select: none;
+}
+
+.mavi {
+    background-color:#5BC0DE !important;
+}
+
+.gri{
+    background-color:#E9EBEE !important;
+}
+
+
+/* Hesabim Sayfasi*/
+.hesap_resmi .br{
+    -webkit-box-shadow: 0px 0px 14px 6px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 0px 14px 6px rgba(212,212,212,1);
+    box-shadow: 0px 0px 14px 6px rgba(212,212,212,1);
+    width: 210px;
+    height: 200px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+.hesap_resmi img{
+    border:5px double #009688;
+    padding:10px;
+
+    -webkit-box-shadow: inset 0px 0px 145px -28px rgba(0,150,135,1);
+    -moz-box-shadow: inset 0px 0px 145px -28px rgba(0,150,135,1);
+    box-shadow: inset 0px 0px 145px -28px rgba(0,150,135,1);
+}
+
+.bakiye {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    width: 210px;
+    background-color:#009688;
+    color: #fff;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-decoration:none;
+    display:block;
+}
+
+.bakiye:hover {
+    text-decoration:none;
+    opacity:0.8;
+    color:#fff;
+}
+
+.resim_degis {
+    display:block;
+    position:absolute;
+    width:30px;
+    height:25px;
+    top:0;
+}
+
+
+.resim_degis a {
+    display:block;
+    padding:0px;
+    width:30px;
+    height:25px;
+    background-color:#000;
+    opacity: 0.6;
+    text-align:center;
+}
+
+
+
+.resim_degis a .fa {
+    color:#fff;
+}
+
+.resim_degis #resim_degis {
+    width:210px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#resim_degis form {
+    background-color:#DDDDDD;
+    height: 140px;
+}
+
+.hesap_bilgileri table {
+    width:100%;
+}
+
+.hesap_bilgileri table th {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.hesap_bilgileri table td {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.hesap_bilgileri .btn {
+    width:100%;
+    background-color:#009688;
+    color: #fff;
+}
+
+.hesap_bilgileri .btn:hover {
+    background-color:#00A897;
+}
+
+
+#dznle_form {
+    background-color: rgba(0,0,0,0.2);
+    display: none;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 100px 0 rgba(0,0,0,0.1);
+}
+
+#uyeDznleKapat {
+    text-align: right;
+    margin: 10px;
+}
+
+#uyeDznleKapat a{
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: rgba(0, 150, 136, 1);
+}
+
+#uyeDznleKapat a:hover{
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+#dznle_form h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#dznle_form  button{
+    background-color: #009688;
+    border: none;
+    width: 100%;
+}
+
+#dznle_form button:hover {
+    background-color: rgba(0, 150, 136, 0.85);
+}
+
+
+
+@media (max-width: 991px) { 
+    .profileAside {
+        display: none;
+    }
+
+}
+
+@media (max-width: 756px) { 
+   .table-list {
+       display: none;
+   }
+   .mobile-list {
+       display: block;
+   }
+
+}

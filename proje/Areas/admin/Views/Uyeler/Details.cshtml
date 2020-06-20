@@ -1,0 +1,87 @@
+﻿@model  proje.Areas.admin.Models.uyeler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+    
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("Index", "Uyeler")">Üyeler</a> 
+    <span class="con_point">> </span><span>Detay</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Üye Detay Sayfası</h3></div>
+            <div class="uye_detay">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="details_profil_img"><img width="187" height="200" src="~/Assets/uploads/profile_img/@Model.resim" alt="profil_img" /></div>
+                        <div class="detay_yetki">
+                            @if (Model.yetki.Trim().Equals("Admin"))
+                            {
+                                <div class="yetki_admin">@Model.yetki</div>
+                            } 
+
+                            @if (Model.yetki.Trim().Equals("Üye"))
+                            {
+                                <div class="yetki_uye">@Model.yetki</div>
+                            }
+                            
+                            @if (Model.yetki.Trim().Equals("Yönetici"))
+                            {
+                                <div class="yetki_yonetici">@Model.yetki</div>
+                            }
+                            
+                        </div>
+                        <div class="detay_yetki"><div class="yetki_bakiye">Bakiye Bilgisi: @Model.bakiye TL</div></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Adı ve Soyadı</th>
+                                    <td>@Model.adsoy</td>
+                                </tr>
+                                <tr>
+                                    <th>Email Adresi</th>
+                                    <td>@Model.email</td>
+                                </tr>
+                                <tr>
+                                    <th>Şifre</th>
+                                    <td>@Model.sifre</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon</th>
+                                    <td>@Model.telefon</td>
+                                </tr>
+                                <tr>
+                                    <th>Şehir</th>
+                                    <td>@Model.sehir</td>
+                                </tr>
+                                <tr>
+                                    <th>Adres</th>
+                                    <td>@Model.adres</td>
+                                </tr>
+                                <tr>
+                                    <th>Durum</th>
+                                    <td>@Model.durum</td>
+                                </tr>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <td>@Model.tarih</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+
+
+

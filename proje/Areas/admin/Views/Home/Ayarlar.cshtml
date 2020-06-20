@@ -1,0 +1,191 @@
+﻿@model proje.Areas.admin.Models.ayarlar
+
+@{
+    ViewBag.Title = "Ayarlar";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span><span>Ayarlar</span>
+</div>
+
+@if (ViewBag.ayarlarGuncelle != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="ace-icon fa fa-times"></i>
+        </button><br>
+        <div>
+            @ViewBag.ayarlarGuncelle
+        </div>
+        <br>
+    </div>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form id="ayarlar" method="post" action="@Url.Action("Ayarlar","Home")">
+                <div class="tab_button">
+                    <button id="genelTab" type="button">GENEL</button>
+                    <button id="hakkimizdaTab" type="button">HAKKIMIZDA</button>
+                    <button id="iletisimTab" type="button">İLETİŞİM</button>
+                    <button id="nasilCalisirTab" type="button">NASIL ÇALIŞIR</button>
+                    <button id="sosyalTab" type="button">SOSYAL MEDYA</button>
+                </div>
+                <div class="tab_card">
+                    <div id="genel">
+                        <div class="form-group">
+                            <label for="site_adi">Site Adı</label>
+                            <input name="site_adi" type="text" class="form-control" id="site_adi" placeholder="Site Adı" value="@Model.site_adi">
+                        </div>
+                        <div class="form-group">
+                            <label for="site_baslik">Site Başlığı</label>
+                            <input name="site_baslik" type="text" class="form-control" id="site_baslik" placeholder="Site Başlığı" value="@Model.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="keywords">Site Anahtar Kelimeler</label>
+                            <input name="keywords" type="text" class="form-control" id="keywords" placeholder="Keywords" value="@Model.keywords">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Site Açıklaması</label>
+                            <input name="description" type="text" class="form-control" id="description" placeholder="Description" value="@Model.description">
+                        </div>
+                        <div class="form-group">
+                            <label for="adres">Firma Adres Bilgisi</label>
+                            <input name="adres" type="text" class="form-control" id="adres" placeholder="Adres" value="@Model.adres">
+                        </div>
+                        <div class="form-group">
+                            <label for="sehir">Şehir</label>
+                            <input name="sehir" type="text" class="form-control" id="sehir" placeholder="Şehir" value="@Model.sehir">
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Firma Telefon Numarası</label>
+                            <input name="tel" type="text" class="form-control" id="tel" placeholder="Telefon" value="@Model.tel">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Firma Email Adresi</label>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Email Adresi" value="@Model.email">
+                        </div>
+                    </div>
+                    <div id="hakkimizda">
+                        <div class="form-group">
+                            <label for="ue_hakkimizda">Hakkımızda Sayfası</label>
+                            <textarea name="hakkimizda" style="width:100%" id="ue_hakkimizda">@Model.hakkimizda</textarea>
+                        </div>
+                    </div>
+                    <div id="iletisim">
+                        <div class="form-group">
+                            <label for="ue_iletisim">İletişim Sayfası</label>
+                            <textarea name="iletisim" style="width:100%" id="ue_iletisim">@Model.iletisim</textarea>
+                        </div>
+                    </div>
+                    <div id="nasil_calisir">
+                        <div class="form-group">
+                            <label for="ue_nasil">Nasıl Çalışır Sayfası</label>
+                            <textarea name="nasil_calisir" style="width:100%" id="ue_nasil">@Model.nasil_calisir</textarea>
+                        </div>
+                    </div>
+                    <div id="sosyal">
+                        <div class="form-group">
+                            <label for="facebook">Facebook Bağlantısı</label>
+                            <input name="facebook" type="text" class="form-control" id="facebook" placeholder="Facebook" value="@Model.facebook">
+                        </div>
+                        <div class="form-group">
+                            <label for="twitter">Twitter Bağlantısı</label>
+                            <input name="twitter" type="text" class="form-control" id="twitter" placeholder="Twitter" value="@Model.twitter">
+                        </div>
+                        <div class="form-group">
+                            <label for="instagram">Instagram Bağlantısı</label>
+                            <input name="instagram" type="text" class="form-control" id="instagram" placeholder="Instagram" value="@Model.instagram">
+                        </div>
+                    </div>
+                </div>
+                <button id="btn_kaydet" type="submit" style="width:100%" class="btn btn-primary">AYARLARI KAYDET</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script src="@Url.Content("~/Assets/ckeditor/ckeditor.js")"></script>
+<script src="@Url.Content("~/Assets/ckeditor/config.js")"></script>
+<script>
+    CKEDITOR.replace('ue_hakkimizda');
+    CKEDITOR.replace('ue_iletisim');
+    CKEDITOR.replace('ue_nasil');
+
+     $(document).ready(function () {
+      $("#genelTab").click(function () {
+          $("#genel").show();
+          $(this).css("background-color", "#fff");
+          $("#hakkimizdaTab").css("background-color", "#DFF0D8");
+          $("#iletisimTab").css("background-color", "#DFF0D8");
+          $("#nasilCalisirTab").css("background-color", "#DFF0D8");
+          $("#sosyalTab").css("background-color", "#DFF0D8");
+         
+          $("#hakkimizda").hide();
+          $("#iletisim").hide();
+          $("#nasil_calisir").hide();
+          $("#sosyal").hide();
+      });
+
+      $("#hakkimizdaTab").click(function () {
+          $("#hakkimizda").show();
+          $(this).css("background-color", "#fff");
+          $("#genelTab").css("background-color", "#DFF0D8");
+          $("#iletisimTab").css("background-color", "#DFF0D8");
+          $("#nasilCalisirTab").css("background-color", "#DFF0D8");
+          $("#sosyalTab").css("background-color", "#DFF0D8");
+
+          $("#genel").hide();
+          $("#iletisim").hide();
+          $("#nasil_calisir").hide();
+          $("#sosyal").hide();
+      });
+
+      $("#iletisimTab").click(function () {
+          $("#iletisim").show();
+          $(this).css("background-color", "#fff");
+          $("#genelTab").css("background-color", "#DFF0D8");
+          $("#hakkimizdaTab").css("background-color", "#DFF0D8");
+          $("#nasilCalisirTab").css("background-color", "#DFF0D8");
+          $("#sosyalTab").css("background-color", "#DFF0D8");
+
+          $("#genel").hide();
+          $("#hakkimizda").hide();
+          $("#nasil_calisir").hide();
+          $("#sosyal").hide();
+      });
+
+      $("#nasilCalisirTab").click(function () {
+          $("#nasil_calisir").show();
+          $(this).css("background-color", "#fff");
+          $("#genelTab").css("background-color", "#DFF0D8");
+          $("#hakkimizdaTab").css("background-color", "#DFF0D8");
+          $("#iletisimTab").css("background-color", "#DFF0D8");
+          $("#sosyalTab").css("background-color", "#DFF0D8");
+
+          $("#genel").hide();
+          $("#hakkimizda").hide();
+          $("#iletisim").hide();
+          $("#sosyal").hide();
+      });
+
+      $("#sosyalTab").click(function () {
+          $("#sosyal").show();
+          $(this).css("background-color", "#fff");
+          $("#genelTab").css("background-color", "#DFF0D8");
+          $("#hakkimizdaTab").css("background-color", "#DFF0D8");
+          $("#iletisimTab").css("background-color", "#DFF0D8");
+          $("#nasilCalisirTab").css("background-color", "#DFF0D8");
+
+          $("#genel").hide();
+          $("#hakkimizda").hide();
+          $("#iletisim").hide();
+          $("#nasil_calisir").hide();
+      });
+  });
+</script>

@@ -1,0 +1,54 @@
+﻿@model proje.Areas.admin.Models.itetisim_mesajlari
+
+@{
+    ViewBag.Title = "Iletisim_oku";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("Iletisim", "Mesajlar")">İletişim Mesajları</a>
+    <span class="con_point">> </span><span>Oku</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>İletişim mesajı oku</h3></div>
+            <div class="uye_detay">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Adsoy</th>
+                                    <td>@Model.adsoy</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>@Model.email</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefon</th>
+                                    <td>@Model.tel</td>
+                                </tr>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <td>@Model.tarih</td>
+                                </tr>
+                                <tr>
+                                    <th>Yerel IP Adresi</th>
+                                    <td>@Model.ip</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h4 class="text-center">Mesaj</h4>
+                        @Html.Raw(Model.mesaj)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

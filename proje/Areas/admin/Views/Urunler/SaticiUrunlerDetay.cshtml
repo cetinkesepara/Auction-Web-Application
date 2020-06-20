@@ -1,0 +1,97 @@
+﻿@model proje.Areas.admin.Models.urunler
+@{
+    ViewBag.Title = "SaticiUrunlerDetay";
+    Layout = "~/Areas/admin/Views/_LayoutAdminPage.cshtml";
+}
+
+<div class="connection_way">
+    <i class="fa fa-home" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+    <span class="con_point">> </span> <a href="@Url.Action("SaticiUrunleri", "Urunler")">Satıcı Ürünleri</a>
+    <span class="con_point">> </span><span>Detay</span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="head_page"><h3>Satıcı Ürünü Detay Sayfası</h3></div>
+            <div class="uye_detay">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="details_profil_img"><img width="187" height="200" src="~/Assets/uploads/products_img/@Model.resim" alt="profil_img" /></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Satıcı Üye</th>
+                                    <td><a href="@Url.Action("Details","Uyeler", new { id = Model.uye_id } )">@Model.uyeler.adsoy</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@Model.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Kategorisi</th>
+                                    <td>@Model.kategoriler.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Stok Durumu</th>
+                                    <td>@Model.stok</td>
+                                </tr>
+                                <tr>
+                                    <th>Taban Fiyatı</th>
+                                    <td>@Model.taban_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Tavan Fiyatı</th>
+                                    <td>@Model.tavan_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Başlatma Tarihi</th>
+                                    <td>@Model.baslangic_tarihi</td>
+                                </tr>
+                                <tr>
+                                    <th>Bitirme Tarihi</th>
+                                    <td>@Model.bitis_tarihi</td>
+                                </tr>
+                                <tr>
+                                    <th>Durum</th>
+                                    <td>@Model.durum</td>
+                                </tr>
+                                <tr>
+                                    <th>Yayın Durumu</th>
+                                    <td>@Model.yayin_durumu</td>
+                                </tr>
+                                <tr>
+                                    <th>Teklif Durumu</th>
+                                    <td>@Model.teklif_durumu</td>
+                                </tr>
+                                <tr>
+                                    <th>Onay Durumu</th>
+                                    <td>@Model.onay_durumu</td>
+                                </tr>
+                                <tr>
+                                    <th>Paylaşım Tarihi</th>
+                                    <td>@Model.tarih</td>
+                                </tr>
+                                <tr>
+                                    <th>Meta Descrition</th>
+                                    <td>@Model.description</td>
+                                </tr>
+                                <tr>
+                                    <th>Meta Keywords</th>
+                                    <td>@Model.keywords</td>
+                                </tr>
+                                <tr></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h4 class="text-center">Ürün Özellik ve Tanıtımı</h4>
+                        @Html.Raw(Model.aciklama)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

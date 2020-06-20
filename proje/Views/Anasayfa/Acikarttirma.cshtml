@@ -1,0 +1,178 @@
+﻿@model IEnumerable<proje.Areas.admin.Models.urun_teklif_butonlari>
+
+@{
+    ViewBag.Title = "Acikarttirma";
+    Layout = "~/Views/_LayoutHomePage.cshtml";
+}
+
+<section id="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="fotorama" data-nav="thumbs" data-thumbwidth="100" data-width="350" data-height="265">
+                    <img src="~/Assets/uploads/products_img/@ViewBag.urun.resim">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tab_button">
+                    <button id="acikArttirmaTab" type="button">Açıkarttırma</button>
+                    <button id="urunBilgisiTab" type="button">Ürün Bilgileri</button>
+                </div>
+                <div class="tab_card">
+                    <div id="acikarttirma">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Bakiyem</th>
+                                    <td>
+                                        <div id="bakiye"></div>
+                                        <input id="session" type="hidden" value="@Session["uye_id"]" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Toplam Teklifim</th>
+                                    <td>
+                                        <div id="toplamTeklif"></div>
+                                        <input id="urun_id" type="hidden" value="@ViewBag.urun.id" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>En Yüksek Teklif</th>
+                                    <td><div id="maxTeklif"></div></td>
+                                </tr>
+                                <tr>
+                                    <th>Bitiş Zamanı</th>
+                                    <td><div class="time" data-countdown="@ViewBag.urun.bitis_tarihi"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h4>Teklif Butonları</h4>
+                        <div class="teklif_btn">
+                            @{int uye_id = Convert.ToInt32(Session["uye_id"]);}
+
+                            @foreach (var button in Model)
+                            {
+                                <button type="button" id="btn@(button.teklif_butonu_id)" onclick="AuctionAdd(@button.teklif_butonu_id,@button.urun_id,@uye_id);"><span class="btn_miktar">@button.teklif_butonlari.miktar TL</span><i class="fa fa-gavel" aria-hidden="true"></i></button>
+                            }
+                        </div>
+                    </div>
+                    <div id="urunbilgisi">
+                        <div class="details">
+                            <table class="table .table-responsive">
+                                <tr>
+                                    <th>Satıcı</th>
+                                    <td>
+                                        @if(ViewBag.urun.uyeler.yetki.Trim() == "Üye")
+                                        {
+                                            <span>@ViewBag.urun.uyeler.adsoy</span>
+                                        }else
+                                        {
+                                            <span>teklifsepetim.com</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>@ViewBag.urun.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Kategorisi</th>
+                                    <td>@ViewBag.urun.kategoriler.adi</td>
+                                </tr>
+                                <tr>
+                                    <th>Taban Fiyatı</th>
+                                    <td>@ViewBag.urun.taban_fiyati TL</td>
+                                </tr>
+                                <tr>
+                                    <th>Tavan Fiyatı</th>
+                                    <td>@ViewBag.urun.tavan_fiyati TL</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="tab_button">
+                    <button id="tekliflerTab" type="button">Teklifler</button>
+                    <button id="toplamTekliflerTab" type="button">Toplam Teklifler</button>
+                </div>
+                <div class="tab_card">
+                    <div id="teklifler">
+                        <ul id="teklifler_listesi"></ul>
+                    </div>
+                    <div id="toplamTeklifler">
+                        <ul id="toplam_teklifler_listesi"></ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12">
+                <h4 class="text-center att_product_head">Ürün Özellik ve Tanıtımı</h4>
+                @Html.Raw(ViewBag.urun.aciklama)
+            </div>
+      </div>
+  </div>
+</section>
+
+<script src="~/Assets/home/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/home/js/jquery.countdown.min.js"></script>
+<script src="~/Assets/home/js/auction.js"></script>
+<script>
+
+
+  $('[data-countdown]').each(function () {
+      var $this = $(this), finalDate = $(this).data('countdown');
+      var finalDateArrayOne = finalDate.split(".");
+      var finalDateArrayTwo = finalDateArrayOne[2].split(" ");
+      var finalDateLast = finalDateArrayTwo[0] + "/" + finalDateArrayOne[1] + "/" + finalDateArrayOne[0] + " " + finalDateArrayTwo[1];
+
+      $this.countdown(finalDateLast, function (event) {
+          $this.html(event.strftime('%D Gün %H:%M:%S'));
+      }).on('finish.countdown', function (event) {
+          $(this).parent()
+            .html('<div class="time">-</div>');
+          location.reload();
+      });
+
+  });
+
+  $(document).ready(function () {
+      $("#acikArttirmaTab").click(function () {
+          $("#acikarttirma").show();
+          $(this).css("background-color", "#fff");
+          $("#urunBilgisiTab").css("background-color", "#DFF0D8");
+          $("#urunbilgisi").hide();
+      });
+      $("#urunBilgisiTab").click(function () {
+          $("#acikarttirma").hide();
+          $(this).css("background-color", "#fff");
+          $("#acikArttirmaTab").css("background-color", "#DFF0D8");
+          $("#urunbilgisi").show();
+      });
+
+      $("#tekliflerTab").click(function () {
+          $("#teklifler").show();
+          $(this).css("background-color", "#fff");
+          $("#toplamTekliflerTab").css("background-color", "#DFF0D8");
+          $("#toplamTeklifler").hide();
+      });
+      $("#toplamTekliflerTab").click(function () {
+          $("#teklifler").hide();
+          $(this).css("background-color", "#fff");
+          $("#tekliflerTab").css("background-color", "#DFF0D8");
+          $("#toplamTeklifler").show();
+      });
+  });
+  
+
+  $(window).unload(function(){
+      $.ajax({
+          type: 'POST',
+          url: '/Anasayfa/Acikarttirma',
+          async:false,
+          data: {key_leave:"289583002"}
+      });
+  });
+</script>
