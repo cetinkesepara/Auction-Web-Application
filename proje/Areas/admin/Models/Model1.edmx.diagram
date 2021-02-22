@@ -4,38 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="04de4d9baf814b3188b3b1fdec67f0ec" Name="Diagram1">
-        <EntityTypeShape EntityType="AuctionTrModel.ayarlar" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.bakiye_yukle" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.engellenen_uyeler" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.galeriler" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.itetisim_mesajlari" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.kargolar" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.kategoriler" Width="1.5" PointX="6.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.mesajlasmalar" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.slider" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.teklif_butonlari" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.teklif_miktarlari" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.teklifler" Width="1.5" PointX="6" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.urun_teklif_butonlari" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.urunler" Width="1.5" PointX="9" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.uyeler" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AuctionTrModel.zamanlar" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="AuctionTrModel.FK_engellenen_uyeler_uyeler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_engellenen_uyeler_uyeler1" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_galeriler_urunler1" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_kargolar_urunler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_kargolar_uyeler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_urunler_kategoriler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_mesajlasmalar_uyeler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_teklif_miktarlari_teklif_butonlari" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_urun_teklif_butonlari_teklif_butonlari" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_teklif_miktarlari_urunler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_teklif_miktarlari_uyeler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_teklifler_urunler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_teklifler_uyeler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_urun_teklif_butonlari_urunler" ManuallyRouted="false" />
-        <AssociationConnector Association="AuctionTrModel.FK_urunler_uyeler" ManuallyRouted="false" />
+      <Diagram DiagramId="e0b3460246964356b0359d360f772279" Name="Diagram1">
+        <EntityTypeShape EntityType="AuctionModel.ayarlar" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.bakiye_yukle" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.engellenen_uyeler" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.galeriler" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.itetisim_mesajlari" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.kargolar" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.kategoriler" Width="1.5" PointX="6.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.mesajlasmalar" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.slider" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.teklif_butonlari" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.teklif_miktarlari" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.teklifler" Width="1.5" PointX="6" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.urun_teklif_butonlari" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.urunler" Width="1.5" PointX="9" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.uyeler" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AuctionModel.zamanlar" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AuctionModel.FK_engellenen_uyeler_uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_engellenen_uyeler_uyeler1" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_galeriler_urunler1" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_kargolar_urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_kargolar_uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_urunler_kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_mesajlasmalar_uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_teklif_miktarlari_teklif_butonlari" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_urun_teklif_butonlari_teklif_butonlari" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_teklif_miktarlari_urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_teklif_miktarlari_uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_teklifler_urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_teklifler_uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_urun_teklif_butonlari_urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="AuctionModel.FK_urunler_uyeler" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

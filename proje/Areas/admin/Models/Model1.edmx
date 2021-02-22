@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AuctionTrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AuctionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ayarlar">
           <Key>
             <PropertyRef Name="id" />
@@ -373,7 +373,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AuctionTrModelStoreContainer">
+        <EntityContainer Name="AuctionModelStoreContainer">
           <EntitySet Name="ayarlar" EntityType="Self.ayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bakiye_yukle" EntityType="Self.bakiye_yukle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="engellenen_uyeler" EntityType="Self.engellenen_uyeler" Schema="dbo" store:Type="Tables" />
@@ -455,7 +455,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AuctionTrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AuctionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ayarlar">
           <Key>
             <PropertyRef Name="id" />
@@ -937,9 +937,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AuctionTrModelStoreContainer" CdmEntityContainer="projeEntities1">
+        <EntityContainerMapping StorageEntityContainer="AuctionModelStoreContainer" CdmEntityContainer="projeEntities1">
           <EntitySetMapping Name="ayarlar">
-            <EntityTypeMapping TypeName="AuctionTrModel.ayarlar">
+            <EntityTypeMapping TypeName="AuctionModel.ayarlar">
               <MappingFragment StoreEntitySet="ayarlar">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="site_adi" ColumnName="site_adi" />
@@ -960,7 +960,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bakiye_yukle">
-            <EntityTypeMapping TypeName="AuctionTrModel.bakiye_yukle">
+            <EntityTypeMapping TypeName="AuctionModel.bakiye_yukle">
               <MappingFragment StoreEntitySet="bakiye_yukle">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="miktar" ColumnName="miktar" />
@@ -971,7 +971,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="engellenen_uyeler">
-            <EntityTypeMapping TypeName="AuctionTrModel.engellenen_uyeler">
+            <EntityTypeMapping TypeName="AuctionModel.engellenen_uyeler">
               <MappingFragment StoreEntitySet="engellenen_uyeler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="engelleyen_u_id" ColumnName="engelleyen_u_id" />
@@ -980,7 +980,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="galeriler">
-            <EntityTypeMapping TypeName="AuctionTrModel.galeriler">
+            <EntityTypeMapping TypeName="AuctionModel.galeriler">
               <MappingFragment StoreEntitySet="galeriler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="urun_id" ColumnName="urun_id" />
@@ -989,7 +989,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="itetisim_mesajlari">
-            <EntityTypeMapping TypeName="AuctionTrModel.itetisim_mesajlari">
+            <EntityTypeMapping TypeName="AuctionModel.itetisim_mesajlari">
               <MappingFragment StoreEntitySet="itetisim_mesajlari">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="adsoy" ColumnName="adsoy" />
@@ -1003,7 +1003,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="kargolar">
-            <EntityTypeMapping TypeName="AuctionTrModel.kargolar">
+            <EntityTypeMapping TypeName="AuctionModel.kargolar">
               <MappingFragment StoreEntitySet="kargolar">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tur" ColumnName="tur" />
@@ -1015,7 +1015,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="kategoriler">
-            <EntityTypeMapping TypeName="AuctionTrModel.kategoriler">
+            <EntityTypeMapping TypeName="AuctionModel.kategoriler">
               <MappingFragment StoreEntitySet="kategoriler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="parent_id" ColumnName="parent_id" />
@@ -1029,7 +1029,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mesajlasmalar">
-            <EntityTypeMapping TypeName="AuctionTrModel.mesajlasmalar">
+            <EntityTypeMapping TypeName="AuctionModel.mesajlasmalar">
               <MappingFragment StoreEntitySet="mesajlasmalar">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="uye_id" ColumnName="uye_id" />
@@ -1042,7 +1042,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="slider">
-            <EntityTypeMapping TypeName="AuctionTrModel.slider">
+            <EntityTypeMapping TypeName="AuctionModel.slider">
               <MappingFragment StoreEntitySet="slider">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="resim" ColumnName="resim" />
@@ -1052,7 +1052,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="teklif_butonlari">
-            <EntityTypeMapping TypeName="AuctionTrModel.teklif_butonlari">
+            <EntityTypeMapping TypeName="AuctionModel.teklif_butonlari">
               <MappingFragment StoreEntitySet="teklif_butonlari">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="miktar" ColumnName="miktar" />
@@ -1060,7 +1060,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="teklif_miktarlari">
-            <EntityTypeMapping TypeName="AuctionTrModel.teklif_miktarlari">
+            <EntityTypeMapping TypeName="AuctionModel.teklif_miktarlari">
               <MappingFragment StoreEntitySet="teklif_miktarlari">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="teklif_butonu_id" ColumnName="teklif_butonu_id" />
@@ -1071,7 +1071,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="teklifler">
-            <EntityTypeMapping TypeName="AuctionTrModel.teklifler">
+            <EntityTypeMapping TypeName="AuctionModel.teklifler">
               <MappingFragment StoreEntitySet="teklifler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="uye_id" ColumnName="uye_id" />
@@ -1082,7 +1082,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="urun_teklif_butonlari">
-            <EntityTypeMapping TypeName="AuctionTrModel.urun_teklif_butonlari">
+            <EntityTypeMapping TypeName="AuctionModel.urun_teklif_butonlari">
               <MappingFragment StoreEntitySet="urun_teklif_butonlari">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="urun_id" ColumnName="urun_id" />
@@ -1091,7 +1091,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="urunler">
-            <EntityTypeMapping TypeName="AuctionTrModel.urunler">
+            <EntityTypeMapping TypeName="AuctionModel.urunler">
               <MappingFragment StoreEntitySet="urunler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="adi" ColumnName="adi" />
@@ -1115,7 +1115,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="uyeler">
-            <EntityTypeMapping TypeName="AuctionTrModel.uyeler">
+            <EntityTypeMapping TypeName="AuctionModel.uyeler">
               <MappingFragment StoreEntitySet="uyeler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="adsoy" ColumnName="adsoy" />
@@ -1133,7 +1133,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="zamanlar">
-            <EntityTypeMapping TypeName="AuctionTrModel.zamanlar">
+            <EntityTypeMapping TypeName="AuctionModel.zamanlar">
               <MappingFragment StoreEntitySet="zamanlar">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tur" ColumnName="tur" />
